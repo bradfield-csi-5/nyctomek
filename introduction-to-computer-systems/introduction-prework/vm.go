@@ -44,39 +44,15 @@ const (
 )
 
 const (
-	IllegalMemoryAccess  = -1
-	IllegalOpCode        = -2
+	IllegalMemoryAccess = -1
+	IllegalOpCode       = -2
 )
 
-func readMemory(memory[] byte, address byte, accessType int) byte {
+func readMemory(memory []byte, address byte, accessType int) byte {
 
-	validAddress := true
+	if accessType == OpCode && address < AddrOpCodeStart {
 
-	if accessType == OpCode {
-		if address < AddrOpCodeStart {
-			validAddress = false
-		}
-	} else if accessType == Load {
-		if address < AddrDataStart || address > AddrDataEnd {
-			validAddress = false
-		}
-	} else {
-		fmt.Fprintf(os.Stderr, "Illegal access type %d.\n", accessType)
-		os.Exit(IllegalMemoryAccess)
-	}
-
-	if !validAddress {
-
-		var accessTypeStr string
-		if accessType == Load {
-			accessTypeStr = "Load"
-		} else {
-			accessTypeStr = "OpCode"
-		}
-	
-		fmt.Fprintf(os.Stderr,
-			"Invalid address %d for access type %s.\n",
-			address, accessTypeStr)
+		fmt.Fprintf(os.Stderr, "Invalid address %d for Opcode access.\n", address)
 
 		os.Exit(IllegalMemoryAccess)
 	}
@@ -84,7 +60,7 @@ func readMemory(memory[] byte, address byte, accessType int) byte {
 	return memory[address]
 }
 
-func writeMemory(memory[] byte, address byte, value byte) {
+func writeMemory(memory []byte, address byte, value byte) {
 
 	if address != AddrStoreLocation {
 		fmt.Fprintf(os.Stderr, "Invalid address %d for write.\n", address)
@@ -102,7 +78,6 @@ func writeMemory(memory[] byte, address byte, value byte) {
 // 00 01 02 03 04 05 06 07 08 09 0a 0b 0c 0d 0e 0f ... ff
 // __ __ __ __ __ __ __ __ __ __ __ __ __ __ __ __ ... __
 // ^==DATA===============^ ^==INSTRUCTIONS==============^
-//
 func compute(memory []byte) {
 
 	registers := [3]byte{8, 0, 0} // PC, R1 and R2
@@ -119,55 +94,55 @@ func compute(memory []byte) {
 		switch op {
 
 		case Load:
-			register := readMemory(memory, pc + 1, OpCode)
-			address  := readMemory(memory, pc + 2, OpCode)
+			register := readMemory(memory, pc+1, OpCode)
+			address := readMemory(memory, pc+2, OpCode)
 			registers[register] = readMemory(memory, address, Data)
 
 		case Store:
-			register := readMemory(memory, pc + 1, OpCode)
-			address  := readMemory(memory, pc + 2, OpCode)
+			register := readMemory(memory, pc+1, OpCode)
+			address := readMemory(memory, pc+2, OpCode)
 			writeMemory(memory, address, registers[register])
 
 		case Add:
-			arg1 := readMemory(memory, pc + 1, OpCode)
-			arg2 := readMemory(memory, pc + 2, OpCode)
+			arg1 := readMemory(memory, pc+1, OpCode)
+			arg2 := readMemory(memory, pc+2, OpCode)
 			registers[arg1] = registers[arg1] + registers[arg2]
 
 		case Sub:
-			arg1 := readMemory(memory, pc + 1, OpCode)
-			arg2 := readMemory(memory, pc + 2, OpCode)
+			arg1 := readMemory(memory, pc+1, OpCode)
+			arg2 := readMemory(memory, pc+2, OpCode)
 			registers[arg1] = registers[arg1] - registers[arg2]
-	
+
 		case Addi:
-			arg1 := readMemory(memory, pc + 1, OpCode)
-			arg2 := readMemory(memory, pc + 2, OpCode)
+			arg1 := readMemory(memory, pc+1, OpCode)
+			arg2 := readMemory(memory, pc+2, OpCode)
 			registers[arg1] = registers[arg1] + arg2
 
 		case Subi:
-			arg1 := readMemory(memory, pc + 1, OpCode)
-			arg2 := readMemory(memory, pc + 2, OpCode)
+			arg1 := readMemory(memory, pc+1, OpCode)
+			arg2 := readMemory(memory, pc+2, OpCode)
 			registers[arg1] = registers[arg1] - arg2
 
 		case Jump:
-			address := readMemory(memory, pc + 1, OpCode)
+			address := readMemory(memory, pc+1, OpCode)
 			registers[0] = address
 			continue
 
 		case Beqz:
-			register := readMemory(memory, pc + 1, OpCode)
-			offset   := readMemory(memory, pc + 2, OpCode)
+			register := readMemory(memory, pc+1, OpCode)
+			offset := readMemory(memory, pc+2, OpCode)
 			if registers[register] == 0 {
 				registers[0] += offset
 			}
 
 		case Halt:
 			return
-		
+
 		default:
 			fmt.Fprintf(os.Stderr, "Illegal opcode: %d.\n", op)
 			os.Exit(IllegalOpCode)
 		}
-	
+
 		registers[0] += StandardOpCodeSize
 	}
 }
