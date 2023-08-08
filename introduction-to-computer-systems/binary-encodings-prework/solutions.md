@@ -128,3 +128,98 @@ Therefore 9001 in hex is: 0x2329
 
 That matches the xxd dump, which means the MSB was encoded first, which is a Big Endian byte ordering.
 ```
+
+## 3.2 TCP
+
+```
+$ xxd tcpheader
+00000000: af00 bc06 441e 7368 eff2 a002 81ff 5600  ....D.sh......V.
+
+Source port      = af00 = a * 16^3 + f * 16^2 = 10 * 4096 + 15 * 256 = 44800.
+Destination port = bc06 = b * 16^3 + c * 16^2 + 6 = (11 * 4096 + 12 * 156 + 6) = 46934.
+Sequence number  = 441e7368 = 4 * 16^7 + 4 * 16^6 + 1 * 16^5 + e * 16^4 + 7 * 16^3 + 3 * 16^2 + 6 * 16^1 + 8 * 16^0 = 1142846312.
+Data Offset      = 8 => we have 3 32-bit words (12 bytes) of optional fields.
+```
+
+## 3.3. Bonus: Byte ordering and integer encoding bitmaps
+
+```
+
+$ hexdump image1.bmp
+0000000 42 4d 0a 0e 00 00 00 00 00 00 8a 00 00 00 7c 00
+0000010 00 00 18 00 00 00 30 00 00 00 01 00 18 00 00 00
+...
+
+$ hexdump image2.bmp
+0000000 42 4d 8a 18 00 00 00 00 00 00 8a 00 00 00 7c 00
+0000010 00 00 20 00 00 00 40 00 00 00 01 00 18 00 00 00
+...
+
+image1.bmp
+Size: 0x00000e0a = e * 16^2 + 10 = 14 * 16^2 + 10 = 3594 bytes.
+
+image2.bmp
+Size: 0x0000188a = 10 + 8 * 16^1 + 8 * 16^2 + 1 * 16^3 = 4096 + 8 * 256 + 128 + 10 = 6282 bytes.
+
+There are a number of BMP format variants.  Which one is these?  (They are both the same variant.)
+Both files have 7c 00 at byte offset 14.  Little Endian that's 0x007c = 124.
+Therefore these are the BITMAPV5HEADER variant.
+
+What are their respective dimensions?
+
+$ hexdump image1.bmp
+0000000 42 4d 0a 0e 00 00 00 00 00 00 8a 00 00 00 7c 00
+0000010 00 00 18 00 00 00 30 00 00 00 01 00 18 00 00 00
+              ^^^^^^^^^^^ ^^^^^^^^^^^
+                  width      height
+00000020  00 00 80 0d 00 00 00 00  00 00 00 00 00 00 00 00
+                ^^^^^
+              image size
+
+width  = 0x00000018 = 24 pixels.
+height = 0x00000030 = 48 pixels.
+
+Calculating image size for fun:
+24 bits/pixel * 24 pixels/row = 576 bits/row => 72 bytes.
+72 bytes/row * 48 rows (i.e. height) = 3456 bytes image size.
+3456 bytes ties out with the image size field: 80 0d (Little Endian).
+
+$ hexdump image2.bmp
+0000000 42 4d 8a 18 00 00 00 00 00 00 8a 00 00 00 7c 00
+0000010 00 00 20 00 00 00 40 00 00 00 01 00 18 00 00 00
+              ^^^^^^^^^^^ ^^^^^^^^^^^
+                 width      height
+00000020  00 00 00 18 00 00 00 00  00 00 00 00 00 00 00 00
+                ^^^^^
+              image size
+
+width  = 0x00000020 = 32 pixels
+height = 0x00000040 = 64 pixels.
+
+Calculating image size for fun:
+24 bits/pixel * 32 pixels/row = 768 bits/row => 96 bytes.
+96 bytes/row * 64 rows (i.e. height) = 6144 bytes.
+6144 bytes ties out with the image size field: 00 18 (Little Endian).
+```
+How much space is required to store each pixel?
+
+```
+$ hexdump image1.bmp
+0000000 42 4d 0a 0e 00 00 00 00 00 00 8a 00 00 00 7c 00
+0000010 00 00 18 00 00 00 30 00 00 00 01 00 18 00 00 00
+                                            ^ 24 bits per pixel.
+```
+24 bits per pixel means 3 bytes are required to store each pixel.
+
+Where does the data start?
+
+```
+The 4 bytes starting at offset 10 of the header tells us where the image data starts.  In each file, that's "8a 00 00 00", which is 138 in Little Endian.
+```
+
+What are the contents of each of the files?
+
+image1.bmp has 0xffffff for all its image data, so it's all white.  Given its dimensions are 24x48 pixels, it's a 24x48 pixel white rectangle.
+
+image2.bmp has 0x0000ff for all its image data.  According to the spec, the colors are ordered blue, green and red (not RGB!) so it's all red.  Given its dimensions are 32x64 pixels, it's a 32x64 pixel red rectangle.
+
