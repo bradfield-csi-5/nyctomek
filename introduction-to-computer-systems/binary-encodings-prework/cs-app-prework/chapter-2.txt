@@ -224,3 +224,70 @@ Hex     Binary
 0x1D    00011101
 0xE1    11100001
 0x19    00011001
+
+Practice Problem 2.27
+
+/* Determine whether arguments can be added without overflow */
+int uadd_ok(unsigned x, unsigned y) {
+    return x + y > x;
+}
+
+Practice Problem 2.28
+
+     x                     Additive Inverse      
+Hex     Decimal             Decimal    Hex
+0          0                  0         0
+5          5                 11         B
+8          8                  8         8
+D         13                  3         3
+F         15                  1         1
+
+Practice Problem 2.45
+
+Fractional value    Binary representation       Decimal representation
+       1/8                0.001                              2^-3 = 0.125
+       3/4                0.11                        2^-1 + 2^-2 = 0.75
+       5/16               0.0101                      2^-2 + 2^-4 = 0.3125
+    2 11/16              10.1011           2 + 2^-1 + 2^-3 + 2^-4 = 2.6875
+      2 1/8              10.001                        2^1 + 2^-3 = 2.125
+      5 7/8             101.111    2^2 + 2^0 + 2^-1 + 2^-2 + 2^-3 = 5.875
+      3 3/16             11.0011          2^1 + 2^0 + 2^-3 + 2^-4 = 3.1875
+
+Practice Problem 2.46
+
+A.  What is the binary representation of 0.1 - x?
+0.00000000000000000000000110011001100110011
+  ***********************
+       ^ 23 zeros
+B.  What is the approximate decimal value of 0.1 - x?
+
+    2^-24 + 2^-25 + 2^-28 + 2^-29 + 2^-32 + 2^-33 = 9.53441486e-8.
+
+C.  ...the system had been running for around 100 hours.  What was the difference between the actual time and the time computed by the software?
+
+    Every 0.1 seconds, 9.53441486e-8 seconds are lost.
+    100 hours = 360000 seconds * 10 (because error is incurred every 0.1 seconds )=> ~ 0.343 seconds difference.
+
+D.  Given that a Scud travels at around 2000 meters per second, how far off was its prediction?
+
+    2000 * 0.343 = ~688.5 meters = ~ 2288 ft.
+
+Practice Problem 2.47
+
+Bits        e       E       2^E     f       M       2^E * M         V       Decimal
+0 00 00     0       0        1      0      0.0          0           0         0
+0 00 01     0       0        1     1/4     1/4         1/4         1/4        0.25    
+0 00 10     0       0        1     1/2     1/2         1/2         1/2        0.5
+0 00 11     0       0        1     3/4     3/4         3/4         3/4        0.75
+0 01 00     1       0        1      0       1           1           1         1
+0 01 10     1       0        1     1/2     3/2         3/2         3/2        1.5
+0 01 11     1       0        1     3/4    1 3/4       1 3/4       1 3/4       1.75
+0 10 00     2       1        2      0       1           2           2         2
+0 10 01     2       1        2     1/4    1 1/4       2 1/2       2 1/2       2.5
+0 10 10     2       1        2     1/2    1 1/2         3           3         3
+0 10 11     2       1        2     3/4    1 3/4       3 1/2       3 1/2       3.5
+0 11 00                                                           +inf
+0 11 01                                                            nan
+0 11 10                                                            nan
+0 11 11                                                            nan
+

@@ -223,3 +223,45 @@ image1.bmp has 0xffffff for all its image data, so it's all white.  Given its di
 
 image2.bmp has 0x0000ff for all its image data.  According to the spec, the colors are ordered blue, green and red (not RGB!) so it's all red.  Given its dimensions are 32x64 pixels, it's a 32x64 pixel red rectangle.
 
+# 4.  IEEE Floating Point
+
+## 4.1 Deconstruction
+
+Identify the 3 components of this 32-bit IEEE Floating Point Number and their values.
+
+01000010001010100000000000000000
+
+Using the three components, compute the value this represents.
+
+01000010001010100000000000000000
+^ sign bit is zero
+
+01000010001010100000000000000000
+ ^^^^^^^^
+ Exponent is 10000100 = 132.
+
+ Bias is (2^7)-1 = 127.
+
+ So exponent is 5.  Therefore the number is (-1)^0 * M * 2^5.
+
+ Solving for M:
+
+ This is the normalized range, so M = 1 + f.
+
+ 0 10000100 01010100000000000000000
+            ^^^^^^^^^^^^^^^^^^^^^^^
+            f = b0.01010100000000000000000
+              = 2^-2 + 2^-4 + 2^-6 = 1/4 + 1/16 + 1/64 = 16/64 + 4/64 + 1/64 = 21/64.
+
+=> M = 1 21/64 => 85/64.
+
+=> value is 1 * 85/64 * 32 = 1 * 85/2 = 85/2 = 42.5.
+
+For the largest fixed exponent, 11111110 == 254 - 127 = 127, what is the smallest (magnitude) incremental change that can be made to a number?
+
+The smallest change would be the LSB of the fractional part (23rd bit) flipping.
+The 23rd bit would contribute 2^-23.  Since that would be multiplied by 2^127, the smallest incremental change would be 2^104 = ~2.03e31.
+
+What does this imply about the precision of IEEE Floating Point values?
+
+It implies the increments get larger at the outer bounds.  In other words, precision goes down drastically as the numbers get larger!
