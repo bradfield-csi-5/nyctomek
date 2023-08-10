@@ -233,7 +233,7 @@ image2.bmp has 0x0000ff for all its image data.  According to the spec, the colo
 ## 4.1 Deconstruction
 
 Identify the 3 components of this 32-bit IEEE Floating Point Number and their values.
-
+```
 01000010001010100000000000000000
 
 Using the three components, compute the value this represents.
@@ -261,6 +261,7 @@ Using the three components, compute the value this represents.
 => M = 1 21/64 => 85/64.
 
 => value is 1 * 85/64 * 32 = 1 * 85/2 = 85/2 = 42.5.
+```
 
 For the largest fixed exponent, 11111110 == 254 - 127 = 127, what is the smallest (magnitude) incremental change that can be made to a number?
 
@@ -323,8 +324,31 @@ Subtracts out 127, effectively biasing the exponent, leaving:
 Left shifts 0b1 by 0b0000010 (i.e. 2), leaving:
 0b100.
 
-And so t becomes 4.
+And so t becomes 0b100, or 4 in demical.
 
 `r = t << (t < v);`
-Left shifs t one more place iff t < v.  That doubles t from 4 to 8.  Boom!
+Left shifts t one more place iff t < v.  That doubles t from 4 to 8.  Boom!
+```
+
+# 5. Character encodings
+
+Is there any additional space cost to encoding a purely ASCII document as UTF-8?
+Answer.  No.  Each character will be encoded as a single byte, just like in ASCII.
+
+What are the advantages and detriments of UTF-8 compared to another encoding for Unicode such as UTF-32?
+Answer.  The advantages of UTF-8 over UTF-32 are that it is compatible with ASCII and doesn't waste space for characters that don't need 4 bytes.  The disadvantage is that it requires more complex decoding logic, since characters don't have a fixed width.
+
+## 5.1 Snowman
+
+I expect snowman.txt to be 4 bytes in size and contain e298830a.
+
+## 5.2 Hello again hellohex
+The first 5 bytes where "hello" in ASCII.
+
+The character encoding apparently is UTF-8, because it has the grinning face emoji at the end, hex code f0 9f 98 80, which is Unicode code point U+1F600.  The contents of the file are "Hello world 😀\n".
+
+## 5.3 Bonus: Ding ding ding!
+
+```
+$ printf "\7\7\7"
 ```
