@@ -350,5 +350,5 @@ The character encoding apparently is UTF-8, because it has the grinning face emo
 ## 5.3 Bonus: Ding ding ding!
 
 ```
-$ printf "\7\7\7"
+printf "\7\7\7"
 ```
