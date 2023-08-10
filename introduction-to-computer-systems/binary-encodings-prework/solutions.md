@@ -100,7 +100,7 @@ The sum is 0b11111111, which is -1.  It matches my expectations given that we're
 
 How do you negate a number in two's complement?  How can we compute subtraction of two's complement numbers?
 
-__TODO__
+You negate each bit and increment the value by 1.  We can compute subtraction a - b by adding a + (negation of b).
 
 What is the value of the most significant bit in 8-bit two's complement?  What about 32-bit two's complement?
 
@@ -108,6 +108,11 @@ What is the value of the most significant bit in 8-bit two's complement?  What a
 -(2^7) if the bit is 1, 0 otherwise.
 32-bit two's complement:
 -2(2^31) if the bit is 1, 0 otherwise.
+
+## 2.5 Advanced: Integer Overflow Detection
+It can be beneficial for our hardware to be able to detect overflow in two’s complement. To do so, we’d need a rule for determining—based solely on bit patterns—if overflow has occurred. Can you describe such a rule?
+
+We look at the sign bits of the two values being added.  If their sign bits are equal but the sign bit of the sum is different, then overflow has occurred.  If the sign bits of the two numbers being added are different, then there can be no overflow.
 
 # 3 Byte Ordering
 
@@ -265,3 +270,61 @@ The 23rd bit would contribute 2^-23.  Since that would be multiplied by 2^127, t
 What does this imply about the precision of IEEE Floating Point values?
 
 It implies the increments get larger at the outer bounds.  In other words, precision goes down drastically as the numbers get larger!
+
+## 4.2 Advanced: Float Casting
+
+```
+unsigned int const v; // Round this 32-bit value to the next highest power of 2
+unsigned int r;       // Put the result here. (So v=3 -> r=4; v=8 -> r=8)
+
+if (v > 1) 
+{
+  float f = (float)v;
+  unsigned int const t = 1U << ((*(unsigned int *)&f >> 23) - 0x7f);
+  r = t << (t < v);
+}
+else 
+{
+  r = 1;
+}
+
+Let's walk through an example: v = 7, we would expect r = 8 after the code runs.
+
+float f = (float)v;
+^ This line initializes f to the IEEE-754 representation of the number 7, which is:
+0 1000001 11000000000000000000000.
+
+Derivation:
+0 1000001 11000000000000000000000
+^ sign
+0 1000001 11000000000000000000000
+  ^^^^^^^
+  exponent field = 129
+0 1000001 11000000000000000000000
+          ^^^^^^^^^^^^^^^^^^^^^^^
+          fractional field = 0.11
+
+That gives us a normalized floating point value of (-1)^0 * 2^(129-127) * (1 + 1/2 + 1/4) =
+
+2^2 * 1.75 = 7.
+
+Now, this line:
+
+unsigned int const t = 1U << ((*(unsigned int *)&f >> 23) - 0x7f);
+
+`(*(unsigned int *)&f >> 23)`
+Shifts away the fractional field, leaving 0b1000001.
+
+`- 0x7f`
+Subtracts out 127, effectively biasing the exponent, leaving:
+0b00000010 (i.e. 2)
+
+`1U <<`
+Left shifts 0b1 by 0b0000010 (i.e. 2), leaving:
+0b100.
+
+And so t becomes 4.
+
+`r = t << (t < v);`
+Left shifs t one more place iff t < v.  That doubles t from 4 to 8.  Boom!
+```
