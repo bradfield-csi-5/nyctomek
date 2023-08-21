@@ -116,4 +116,19 @@ pagecount:                              # @pagecount
 ### By using Agner Fog’s instruction tables or reviewing CS:APP chapter 5.7, can you determine which of the generated instructions may be slow?
 Definitely the `divq`/`div`.
 
+### Noting that a page size is always a power of 2, and that the size of memory will always be cleanly divisible by the page size, can you think of a performance optimization we could employ? You are welcome to change the function signature and test runner code.
+We can use bit shifts instead of division.  The exercise files already shipped with a version of `pagecount` that uses bit shift instead of division.
+```
+uint64_t pagecount(uint64_t memory_size, uint64_t page_size) {
+  uint64_t a = __builtin_ffsl(memory_size);
+  uint64_t b = __builtin_ffsl(page_size);
+  return 1LLU << (a - b);
+}
+```
+This version still needs to call `__builtin_ffsl` twice, which will probably use bit shifts to figure out the first set bit.  Looking at the sample input, that would be ~41 shifts in the average case for `memory_size` and 10 shifts in the average case for `page_size`.
+```
+uint64_t msizes[] = {1L << 32, 1L << 40, 1L << 52};
+uint64_t psizes[] = {1L << 12, 1L << 16, 1L << 32};
+```
+Then there's a `sub` and another shift, so average case around ~41 + 10 + 1 + 1 = 53 instructions.  Given that `sub` and the shift instructions have a latency of about 1, we're looking at a total latency of 53 core clock cycles.  The latency of a single `div` of a 64-bit register on my architecture (Intel Skylake), is 35-88 core clock cycles.  So at best I would expect the optimized version to take 53 / 88 = ~60% as much time as the original version.
 

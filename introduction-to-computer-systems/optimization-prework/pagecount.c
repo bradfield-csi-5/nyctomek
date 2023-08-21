@@ -9,15 +9,15 @@
 // divides the other
 //
 
-uint64_t pagecount(uint64_t memory_size, uint64_t page_size) {
-  return memory_size / page_size;
-}
-
-// uint64_t pagecount_left_shift(uint64_t memory_size, uint64_t page_size) {
-//   uint64_t a = __builtin_ffsl(memory_size);
-//   uint64_t b = __builtin_ffsl(page_size);
-//   return 1LLU << (a - b);
+// uint64_t pagecount(uint64_t memory_size, uint64_t page_size) {
+//   return memory_size / page_size;
 // }
+
+uint64_t pagecount(uint64_t memory_size, uint64_t page_size) {
+  uint64_t a = __builtin_ffsl(memory_size);
+  uint64_t b = __builtin_ffsl(page_size);
+  return 1LLU << (a - b);
+}
 
 // uint64_t pagecount_right_shift(uint64_t memory_size, uint64_t page_size) {
 //   uint64_t shift_amount = __builtin_ffsl(page_size);
