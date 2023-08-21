@@ -3,19 +3,27 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define TEST_LOOPS 10000000
+#define TEST_LOOPS 100000000
 
 // NOTE: we know that memory_size and page_size are both powers of 2, so one
 // divides the other
 //
 
 uint64_t pagecount(uint64_t memory_size, uint64_t page_size) {
-  uint64_t a = __builtin_ffsl(memory_size);
-  uint64_t b = __builtin_ffsl(page_size);
-  // printf("%llu %llu %llu %llu\n", memory_size, page_size, a, b);
-  // printf("%llu, %llu\n", memory_size / page_size, 1LLU << (a - b));
-  return 1LLU << (a - b);
+  return memory_size / page_size;
 }
+
+// uint64_t pagecount_left_shift(uint64_t memory_size, uint64_t page_size) {
+//   uint64_t a = __builtin_ffsl(memory_size);
+//   uint64_t b = __builtin_ffsl(page_size);
+//   return 1LLU << (a - b);
+// }
+
+// uint64_t pagecount_right_shift(uint64_t memory_size, uint64_t page_size) {
+//   uint64_t shift_amount = __builtin_ffsl(page_size);
+//   --shift_amount;
+//   return memory_size >> shift_amount;
+// }
 
 int main (int argc, char** argv) {
   clock_t baseline_start, baseline_end, test_start, test_end;
@@ -46,8 +54,9 @@ int main (int argc, char** argv) {
   clocks_elapsed = test_end - test_start - (baseline_end - baseline_start);
   time_elapsed = clocks_elapsed / CLOCKS_PER_SEC;
 
-  printf("%.2fs to run %d tests (%.2fns per test)\n", time_elapsed, TEST_LOOPS,
+  printf("pagecount(): %.2fs to run %d tests (%.2fns per test)\n", time_elapsed, TEST_LOOPS,
          time_elapsed * 1e9 / TEST_LOOPS);
+
   return ignore;
 }
 
