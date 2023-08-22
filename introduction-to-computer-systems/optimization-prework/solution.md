@@ -164,16 +164,16 @@ gcc -O0 -o pagecount pagecount.c && objdump -d pagecount
     11f0:       5d                      pop    %rbp                         ; 2
     11f1:       c3                      ret                                 ; n/a
 ```
-There are 31 instructions in this version of `pagecount`.  I've commented the disassembly with the latency for each instruction based based on Abner Fog's instruction tables for my architecture, Skylake.  The function should take around 35 cycles.
+There are 31 instructions in this version of `pagecount`.  I've commented the disassembly with the latency for each instruction based on Abner Fog's instruction tables for my architecture, Skylake.  The function should take around 35 cycles.
 
-The `O0` version using `div` only has 10 instructions, but `div` has a latency of 35-88 cycles.  I'll assume it averages out to the median, of 62 cycles, for a total of about 70 cycles per function run.  So I would expect the version using `__buildin_ffsl` to take about 35/70 = 50% as much time.
+The `O0` version using `div` only has 10 instructions, but `div` has a latency of 35-88 cycles.  I'll assume it averages out to the median, of 62 cycles, for a total of about 70 cycles per function run.  So I would expect the version using `__buildin_ffsl` to take about `35 / 70 = 50%` as much time.
 
 ### Go ahead and make the improvement, and measure the speed up. Did this match your expectations?
 
 ```
 pagecount(): 0.42s to run 100000000 tests (4.18ns per test)
 ```
-Comparing to the `O0` `div`-based version's performance (9.34ns ns per test), the `O0` `shl`-based version ran in 4.18 / 9.34 = 45% of the time.  That certainly lines up with expectations.
+Comparing to the `O0` `div`-based version's performance (9.34ns ns per test), the `O0` `shl`-based version ran in `4.18 / 9.34 = 45%` of the time.  That certainly lines up with expectations.
 
 ### Consider, what is stopping the compiler from making the same optimization that you did?
 
@@ -225,5 +225,5 @@ pagecount(): 0.47s to run 100000000 tests (4.71ns per test)
        1.244973000 seconds user
        0.000000000 seconds sys
 ```
-The `shl`-based code uses 3,774,321,155 / 5,118,606,462 = ~73% as many CPU cycles as the `div`-based version.  That's more than the 45% measured by the test runner code.  But that's because the CPU cycles reported are for the entire program, including outer loop that calls `pagecount`, so they include some outside noise.
+The `shl`-based code uses `3,774,321,155 / 5,118,606,462 = ~73%` as many CPU cycles as the `div`-based version.  That's more than the 45% measured by the test runner code.  But that's because the CPU cycles reported are for the entire program, including outer loop that calls `pagecount`, so they include some outside noise.
 
