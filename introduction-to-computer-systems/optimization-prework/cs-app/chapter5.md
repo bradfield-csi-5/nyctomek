@@ -32,7 +32,7 @@ xpwr = x * xpwr;
  ```
  result = a[i] + x*result;
  ```
- The floating point addition contributes a latency of 5 clock cycles while the floating point addition contributes a latency of 3 clock cycles.  Since the code has a measured CPE of 8.00, that means the two operations were parallelized.  In other words, there's a data dependency between consecutive iterations on both the addition and multiplication operation.  Within a single iteration, the multiplication needs to complete before the addition can execute, and until the addition completes, the multiplication for the next iteration can't begin, because it depends on the sum of the addition being written back to `result`.
+ The floating point addition contributes a latency of 5 clock cycles while the floating point addition contributes a latency of 3 clock cycles.  Since the code has a measured CPE of 8.00, that means the two operations weren't parallelized.  In other words, there's a data dependency between consecutive iterations on both the addition and multiplication operation.  Within a single iteration, the multiplication needs to complete before the addition can execute, and until the addition completes, the multiplication for the next iteration can't begin, because it depends on the sum of the addition being written back to `result`.
 
 C.
 The function from Practice Problem 5.5 can run faster because it can be parallelized as described in the solution to Practice Problem 5.5 and therefore take advantage of the floating point multiplication throughput of 0.5.
