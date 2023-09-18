@@ -13,7 +13,7 @@
 00000000  d4 c3 b2 a1                                       |....|
 00000004
 ```
-The magic number is 0xa1b2c3d4 in Little Endian.
+The magic number is `0xa1b2c3d4` in Little Endian.
 That means the pcap-specific parts of the file will be Little Endian.
 
 **Question**
