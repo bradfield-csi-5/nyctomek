@@ -105,7 +105,12 @@ int main(int argc, char *argv[]) {
         }
         offsetToNextPacket = lenDataCaptured;
 
-        // Ethernet Frame.
+        //////////////////////////////
+        //                          //
+        //      Ethernet Frame      //
+        //                          //
+        //////////////////////////////
+
         if(numPackets > 0) {
             printf("\n");
         }
@@ -151,7 +156,11 @@ int main(int argc, char *argv[]) {
             }
         }
 
-        // IP Header.
+        //////////////////////////////
+        //                          //
+        //        IP Header         //
+        //                          //
+        //////////////////////////////
 
         unsigned char ipHeaderBuffer[IP_HEADER_REQUIRED_FIELDS_LEN] = {0};
         bytesRead = read(fd, ipHeaderBuffer, IP_HEADER_REQUIRED_FIELDS_LEN);
@@ -194,7 +203,11 @@ int main(int argc, char *argv[]) {
         printf("%-25s%s\n", "Destination IP Address:", destIPAddr);
         printf("%-25s%s\n", "Source IP Address:",      sourceIPAddr);
 
-        // TCP Header.
+        //////////////////////////////
+        //                          //
+        //        TCP Header        //
+        //                          //
+        //////////////////////////////
 
         unsigned char tcpHeader[TCP_HEADER_REQUIRED_FIELDS_LEN] = {0};
         bytesRead = read(fd, tcpHeader, TCP_HEADER_REQUIRED_FIELDS_LEN);
@@ -220,6 +233,12 @@ int main(int argc, char *argv[]) {
         printf("%-25s%u\n", "Is ACK Packet: ",        isAck);
         printf("%-25s%u\n", "Sequence Number: ",      sequenceNumber);
         printf("%-25s%u\n", "TCP Payload Length: ",   tcpPayloadLen);
+
+        //////////////////////////////
+        //                          //
+        //        HTTP Data         //
+        //                          //
+        //////////////////////////////
 
         // Accumulate the HTTP response payloads.
         if(tcpPayloadLen && sourcePort == 80) {
