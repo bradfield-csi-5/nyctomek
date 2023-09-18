@@ -289,8 +289,6 @@ int main(int argc, char *argv[]) {
     }
     qsort(sortedPayloads, numPayloadNodes, sizeof(TCPPayload_t*), compareSequenceNumbers);
 
-    
-
     int imageFD = creat("image.jpg", S_IRWXU | S_IRGRP | S_IROTH);
     unsigned int prevSequenceNumber = 0;
     for(int i = 0; i < numPayloadNodes; ++i) {
