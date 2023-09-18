@@ -1,0 +1,1880 @@
+---------
+PACKET 1
+---------
+Destination MAC Address: c4:e9:84:87:60:28
+Source MAC Address:      a4:5e:60:df:2e:1b
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       44
+Transport Protocol       6
+Destination IP Address:  192.30.252.154
+Source IP Address:       192.168.0.101
+TCP Source Port:         59295
+TCP Destination Port:    80
+TCP Header Length:       44
+Is SYN Packet:           1
+Is ACK Packet:           0
+Sequence Number:         1588273765
+TCP Payload Length:      0
+
+---------
+PACKET 2
+---------
+Destination MAC Address: a4:5e:60:df:2e:1b
+Source MAC Address:      c4:e9:84:87:60:28
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       40
+Transport Protocol       6
+Destination IP Address:  192.168.0.101
+Source IP Address:       192.30.252.154
+TCP Source Port:         80
+TCP Destination Port:    59295
+TCP Header Length:       40
+Is SYN Packet:           1
+Is ACK Packet:           1
+Sequence Number:         150766358
+TCP Payload Length:      0
+
+---------
+PACKET 3
+---------
+Destination MAC Address: c4:e9:84:87:60:28
+Source MAC Address:      a4:5e:60:df:2e:1b
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       44
+Transport Protocol       6
+Destination IP Address:  192.30.252.154
+Source IP Address:       192.168.0.101
+TCP Source Port:         59295
+TCP Destination Port:    80
+TCP Header Length:       44
+Is SYN Packet:           1
+Is ACK Packet:           0
+Sequence Number:         1588273765
+TCP Payload Length:      0
+
+---------
+PACKET 4
+---------
+Destination MAC Address: a4:5e:60:df:2e:1b
+Source MAC Address:      c4:e9:84:87:60:28
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       40
+Transport Protocol       6
+Destination IP Address:  192.168.0.101
+Source IP Address:       192.30.252.154
+TCP Source Port:         80
+TCP Destination Port:    59295
+TCP Header Length:       40
+Is SYN Packet:           1
+Is ACK Packet:           1
+Sequence Number:         150766358
+TCP Payload Length:      0
+
+---------
+PACKET 5
+---------
+Destination MAC Address: c4:e9:84:87:60:28
+Source MAC Address:      a4:5e:60:df:2e:1b
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       44
+Transport Protocol       6
+Destination IP Address:  192.30.252.154
+Source IP Address:       192.168.0.101
+TCP Source Port:         59295
+TCP Destination Port:    80
+TCP Header Length:       44
+Is SYN Packet:           1
+Is ACK Packet:           0
+Sequence Number:         1588273765
+TCP Payload Length:      0
+
+---------
+PACKET 6
+---------
+Destination MAC Address: a4:5e:60:df:2e:1b
+Source MAC Address:      c4:e9:84:87:60:28
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       40
+Transport Protocol       6
+Destination IP Address:  192.168.0.101
+Source IP Address:       192.30.252.154
+TCP Source Port:         80
+TCP Destination Port:    59295
+TCP Header Length:       40
+Is SYN Packet:           1
+Is ACK Packet:           1
+Sequence Number:         150766358
+TCP Payload Length:      0
+
+---------
+PACKET 7
+---------
+Destination MAC Address: c4:e9:84:87:60:28
+Source MAC Address:      a4:5e:60:df:2e:1b
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       44
+Transport Protocol       6
+Destination IP Address:  192.30.252.154
+Source IP Address:       192.168.0.101
+TCP Source Port:         59295
+TCP Destination Port:    80
+TCP Header Length:       44
+Is SYN Packet:           1
+Is ACK Packet:           0
+Sequence Number:         1588273765
+TCP Payload Length:      0
+
+---------
+PACKET 8
+---------
+Destination MAC Address: a4:5e:60:df:2e:1b
+Source MAC Address:      c4:e9:84:87:60:28
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       40
+Transport Protocol       6
+Destination IP Address:  192.168.0.101
+Source IP Address:       192.30.252.154
+TCP Source Port:         80
+TCP Destination Port:    59295
+TCP Header Length:       40
+Is SYN Packet:           1
+Is ACK Packet:           1
+Sequence Number:         150766358
+TCP Payload Length:      0
+
+---------
+PACKET 9
+---------
+Destination MAC Address: c4:e9:84:87:60:28
+Source MAC Address:      a4:5e:60:df:2e:1b
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       44
+Transport Protocol       6
+Destination IP Address:  192.30.252.154
+Source IP Address:       192.168.0.101
+TCP Source Port:         59295
+TCP Destination Port:    80
+TCP Header Length:       44
+Is SYN Packet:           1
+Is ACK Packet:           0
+Sequence Number:         1588273765
+TCP Payload Length:      0
+
+---------
+PACKET 10
+---------
+Destination MAC Address: c4:e9:84:87:60:28
+Source MAC Address:      a4:5e:60:df:2e:1b
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       44
+Transport Protocol       6
+Destination IP Address:  192.30.252.154
+Source IP Address:       192.168.0.101
+TCP Source Port:         59295
+TCP Destination Port:    80
+TCP Header Length:       44
+Is SYN Packet:           1
+Is ACK Packet:           0
+Sequence Number:         1588273765
+TCP Payload Length:      0
+
+---------
+PACKET 11
+---------
+Destination MAC Address: a4:5e:60:df:2e:1b
+Source MAC Address:      c4:e9:84:87:60:28
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       40
+Transport Protocol       6
+Destination IP Address:  192.168.0.101
+Source IP Address:       192.30.252.154
+TCP Source Port:         80
+TCP Destination Port:    59295
+TCP Header Length:       40
+Is SYN Packet:           1
+Is ACK Packet:           1
+Sequence Number:         150766358
+TCP Payload Length:      0
+
+---------
+PACKET 12
+---------
+Destination MAC Address: a4:5e:60:df:2e:1b
+Source MAC Address:      c4:e9:84:87:60:28
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       40
+Transport Protocol       6
+Destination IP Address:  192.168.0.101
+Source IP Address:       192.30.252.154
+TCP Source Port:         80
+TCP Destination Port:    59295
+TCP Header Length:       40
+Is SYN Packet:           1
+Is ACK Packet:           1
+Sequence Number:         150766358
+TCP Payload Length:      0
+
+---------
+PACKET 13
+---------
+Destination MAC Address: c4:e9:84:87:60:28
+Source MAC Address:      a4:5e:60:df:2e:1b
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       44
+Transport Protocol       6
+Destination IP Address:  192.30.252.154
+Source IP Address:       192.168.0.101
+TCP Source Port:         59295
+TCP Destination Port:    80
+TCP Header Length:       44
+Is SYN Packet:           1
+Is ACK Packet:           0
+Sequence Number:         1588273765
+TCP Payload Length:      0
+
+---------
+PACKET 14
+---------
+Destination MAC Address: a4:5e:60:df:2e:1b
+Source MAC Address:      c4:e9:84:87:60:28
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       40
+Transport Protocol       6
+Destination IP Address:  192.168.0.101
+Source IP Address:       192.30.252.154
+TCP Source Port:         80
+TCP Destination Port:    59295
+TCP Header Length:       40
+Is SYN Packet:           1
+Is ACK Packet:           1
+Sequence Number:         150766358
+TCP Payload Length:      0
+
+---------
+PACKET 15
+---------
+Destination MAC Address: c4:e9:84:87:60:28
+Source MAC Address:      a4:5e:60:df:2e:1b
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       112
+Transport Protocol       6
+Destination IP Address:  192.30.252.154
+Source IP Address:       192.168.0.101
+TCP Source Port:         59295
+TCP Destination Port:    80
+TCP Header Length:       32
+Is SYN Packet:           0
+Is ACK Packet:           1
+Sequence Number:         1588273766
+TCP Payload Length:      80
+
+---------
+PACKET 16
+---------
+Destination MAC Address: a4:5e:60:df:2e:1b
+Source MAC Address:      c4:e9:84:87:60:28
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       1456
+Transport Protocol       6
+Destination IP Address:  192.168.0.101
+Source IP Address:       192.30.252.154
+TCP Source Port:         80
+TCP Destination Port:    59295
+TCP Header Length:       32
+Is SYN Packet:           0
+Is ACK Packet:           1
+Sequence Number:         150766359
+TCP Payload Length:      1424
+
+---------
+PACKET 17
+---------
+Destination MAC Address: c4:e9:84:87:60:28
+Source MAC Address:      a4:5e:60:df:2e:1b
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       32
+Transport Protocol       6
+Destination IP Address:  192.30.252.154
+Source IP Address:       192.168.0.101
+TCP Source Port:         59295
+TCP Destination Port:    80
+TCP Header Length:       32
+Is SYN Packet:           0
+Is ACK Packet:           1
+Sequence Number:         1588273846
+TCP Payload Length:      0
+
+---------
+PACKET 18
+---------
+Destination MAC Address: c4:e9:84:87:60:28
+Source MAC Address:      a4:5e:60:df:2e:1b
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       32
+Transport Protocol       6
+Destination IP Address:  192.30.252.154
+Source IP Address:       192.168.0.101
+TCP Source Port:         59295
+TCP Destination Port:    80
+TCP Header Length:       32
+Is SYN Packet:           0
+Is ACK Packet:           1
+Sequence Number:         1588273846
+TCP Payload Length:      0
+
+---------
+PACKET 19
+---------
+Destination MAC Address: c4:e9:84:87:60:28
+Source MAC Address:      a4:5e:60:df:2e:1b
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       32
+Transport Protocol       6
+Destination IP Address:  192.30.252.154
+Source IP Address:       192.168.0.101
+TCP Source Port:         59295
+TCP Destination Port:    80
+TCP Header Length:       32
+Is SYN Packet:           0
+Is ACK Packet:           1
+Sequence Number:         1588273846
+TCP Payload Length:      0
+
+---------
+PACKET 20
+---------
+Destination MAC Address: c4:e9:84:87:60:28
+Source MAC Address:      a4:5e:60:df:2e:1b
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       32
+Transport Protocol       6
+Destination IP Address:  192.30.252.154
+Source IP Address:       192.168.0.101
+TCP Source Port:         59295
+TCP Destination Port:    80
+TCP Header Length:       32
+Is SYN Packet:           0
+Is ACK Packet:           1
+Sequence Number:         1588273846
+TCP Payload Length:      0
+
+---------
+PACKET 21
+---------
+Destination MAC Address: c4:e9:84:87:60:28
+Source MAC Address:      a4:5e:60:df:2e:1b
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       32
+Transport Protocol       6
+Destination IP Address:  192.30.252.154
+Source IP Address:       192.168.0.101
+TCP Source Port:         59295
+TCP Destination Port:    80
+TCP Header Length:       32
+Is SYN Packet:           0
+Is ACK Packet:           1
+Sequence Number:         1588273846
+TCP Payload Length:      0
+
+---------
+PACKET 22
+---------
+Destination MAC Address: c4:e9:84:87:60:28
+Source MAC Address:      a4:5e:60:df:2e:1b
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       32
+Transport Protocol       6
+Destination IP Address:  192.30.252.154
+Source IP Address:       192.168.0.101
+TCP Source Port:         59295
+TCP Destination Port:    80
+TCP Header Length:       32
+Is SYN Packet:           0
+Is ACK Packet:           1
+Sequence Number:         1588273846
+TCP Payload Length:      0
+
+---------
+PACKET 23
+---------
+Destination MAC Address: a4:5e:60:df:2e:1b
+Source MAC Address:      c4:e9:84:87:60:28
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       1456
+Transport Protocol       6
+Destination IP Address:  192.168.0.101
+Source IP Address:       192.30.252.154
+TCP Source Port:         80
+TCP Destination Port:    59295
+TCP Header Length:       32
+Is SYN Packet:           0
+Is ACK Packet:           1
+Sequence Number:         150767783
+TCP Payload Length:      1424
+
+---------
+PACKET 24
+---------
+Destination MAC Address: a4:5e:60:df:2e:1b
+Source MAC Address:      c4:e9:84:87:60:28
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       1456
+Transport Protocol       6
+Destination IP Address:  192.168.0.101
+Source IP Address:       192.30.252.154
+TCP Source Port:         80
+TCP Destination Port:    59295
+TCP Header Length:       32
+Is SYN Packet:           0
+Is ACK Packet:           1
+Sequence Number:         150769207
+TCP Payload Length:      1424
+
+---------
+PACKET 25
+---------
+Destination MAC Address: a4:5e:60:df:2e:1b
+Source MAC Address:      c4:e9:84:87:60:28
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       1456
+Transport Protocol       6
+Destination IP Address:  192.168.0.101
+Source IP Address:       192.30.252.154
+TCP Source Port:         80
+TCP Destination Port:    59295
+TCP Header Length:       32
+Is SYN Packet:           0
+Is ACK Packet:           1
+Sequence Number:         150770631
+TCP Payload Length:      1424
+
+---------
+PACKET 26
+---------
+Destination MAC Address: a4:5e:60:df:2e:1b
+Source MAC Address:      c4:e9:84:87:60:28
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       1456
+Transport Protocol       6
+Destination IP Address:  192.168.0.101
+Source IP Address:       192.30.252.154
+TCP Source Port:         80
+TCP Destination Port:    59295
+TCP Header Length:       32
+Is SYN Packet:           0
+Is ACK Packet:           1
+Sequence Number:         150767783
+TCP Payload Length:      1424
+
+---------
+PACKET 27
+---------
+Destination MAC Address: a4:5e:60:df:2e:1b
+Source MAC Address:      c4:e9:84:87:60:28
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       1456
+Transport Protocol       6
+Destination IP Address:  192.168.0.101
+Source IP Address:       192.30.252.154
+TCP Source Port:         80
+TCP Destination Port:    59295
+TCP Header Length:       32
+Is SYN Packet:           0
+Is ACK Packet:           1
+Sequence Number:         150767783
+TCP Payload Length:      1424
+
+---------
+PACKET 28
+---------
+Destination MAC Address: c4:e9:84:87:60:28
+Source MAC Address:      a4:5e:60:df:2e:1b
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       44
+Transport Protocol       6
+Destination IP Address:  192.30.252.154
+Source IP Address:       192.168.0.101
+TCP Source Port:         59295
+TCP Destination Port:    80
+TCP Header Length:       44
+Is SYN Packet:           0
+Is ACK Packet:           1
+Sequence Number:         1588273846
+TCP Payload Length:      0
+
+---------
+PACKET 29
+---------
+Destination MAC Address: a4:5e:60:df:2e:1b
+Source MAC Address:      c4:e9:84:87:60:28
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       1456
+Transport Protocol       6
+Destination IP Address:  192.168.0.101
+Source IP Address:       192.30.252.154
+TCP Source Port:         80
+TCP Destination Port:    59295
+TCP Header Length:       32
+Is SYN Packet:           0
+Is ACK Packet:           1
+Sequence Number:         150773479
+TCP Payload Length:      1424
+
+---------
+PACKET 30
+---------
+Destination MAC Address: c4:e9:84:87:60:28
+Source MAC Address:      a4:5e:60:df:2e:1b
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       44
+Transport Protocol       6
+Destination IP Address:  192.30.252.154
+Source IP Address:       192.168.0.101
+TCP Source Port:         59295
+TCP Destination Port:    80
+TCP Header Length:       44
+Is SYN Packet:           0
+Is ACK Packet:           1
+Sequence Number:         1588273846
+TCP Payload Length:      0
+
+---------
+PACKET 31
+---------
+Destination MAC Address: a4:5e:60:df:2e:1b
+Source MAC Address:      c4:e9:84:87:60:28
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       1456
+Transport Protocol       6
+Destination IP Address:  192.168.0.101
+Source IP Address:       192.30.252.154
+TCP Source Port:         80
+TCP Destination Port:    59295
+TCP Header Length:       32
+Is SYN Packet:           0
+Is ACK Packet:           1
+Sequence Number:         150774903
+TCP Payload Length:      1424
+
+---------
+PACKET 32
+---------
+Destination MAC Address: c4:e9:84:87:60:28
+Source MAC Address:      a4:5e:60:df:2e:1b
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       44
+Transport Protocol       6
+Destination IP Address:  192.30.252.154
+Source IP Address:       192.168.0.101
+TCP Source Port:         59295
+TCP Destination Port:    80
+TCP Header Length:       44
+Is SYN Packet:           0
+Is ACK Packet:           1
+Sequence Number:         1588273846
+TCP Payload Length:      0
+
+---------
+PACKET 33
+---------
+Destination MAC Address: a4:5e:60:df:2e:1b
+Source MAC Address:      c4:e9:84:87:60:28
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       1456
+Transport Protocol       6
+Destination IP Address:  192.168.0.101
+Source IP Address:       192.30.252.154
+TCP Source Port:         80
+TCP Destination Port:    59295
+TCP Header Length:       32
+Is SYN Packet:           0
+Is ACK Packet:           1
+Sequence Number:         150770631
+TCP Payload Length:      1424
+
+---------
+PACKET 34
+---------
+Destination MAC Address: c4:e9:84:87:60:28
+Source MAC Address:      a4:5e:60:df:2e:1b
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       44
+Transport Protocol       6
+Destination IP Address:  192.30.252.154
+Source IP Address:       192.168.0.101
+TCP Source Port:         59295
+TCP Destination Port:    80
+TCP Header Length:       44
+Is SYN Packet:           0
+Is ACK Packet:           1
+Sequence Number:         1588273846
+TCP Payload Length:      0
+
+---------
+PACKET 35
+---------
+Destination MAC Address: a4:5e:60:df:2e:1b
+Source MAC Address:      c4:e9:84:87:60:28
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       1456
+Transport Protocol       6
+Destination IP Address:  192.168.0.101
+Source IP Address:       192.30.252.154
+TCP Source Port:         80
+TCP Destination Port:    59295
+TCP Header Length:       32
+Is SYN Packet:           0
+Is ACK Packet:           1
+Sequence Number:         150776327
+TCP Payload Length:      1424
+
+---------
+PACKET 36
+---------
+Destination MAC Address: a4:5e:60:df:2e:1b
+Source MAC Address:      c4:e9:84:87:60:28
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       1456
+Transport Protocol       6
+Destination IP Address:  192.168.0.101
+Source IP Address:       192.30.252.154
+TCP Source Port:         80
+TCP Destination Port:    59295
+TCP Header Length:       32
+Is SYN Packet:           0
+Is ACK Packet:           1
+Sequence Number:         150772055
+TCP Payload Length:      1424
+
+---------
+PACKET 37
+---------
+Destination MAC Address: c4:e9:84:87:60:28
+Source MAC Address:      a4:5e:60:df:2e:1b
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       32
+Transport Protocol       6
+Destination IP Address:  192.30.252.154
+Source IP Address:       192.168.0.101
+TCP Source Port:         59295
+TCP Destination Port:    80
+TCP Header Length:       32
+Is SYN Packet:           0
+Is ACK Packet:           1
+Sequence Number:         1588273846
+TCP Payload Length:      0
+
+---------
+PACKET 38
+---------
+Destination MAC Address: c4:e9:84:87:60:28
+Source MAC Address:      a4:5e:60:df:2e:1b
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       32
+Transport Protocol       6
+Destination IP Address:  192.30.252.154
+Source IP Address:       192.168.0.101
+TCP Source Port:         59295
+TCP Destination Port:    80
+TCP Header Length:       32
+Is SYN Packet:           0
+Is ACK Packet:           1
+Sequence Number:         1588273846
+TCP Payload Length:      0
+
+---------
+PACKET 39
+---------
+Destination MAC Address: a4:5e:60:df:2e:1b
+Source MAC Address:      c4:e9:84:87:60:28
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       1456
+Transport Protocol       6
+Destination IP Address:  192.168.0.101
+Source IP Address:       192.30.252.154
+TCP Source Port:         80
+TCP Destination Port:    59295
+TCP Header Length:       32
+Is SYN Packet:           0
+Is ACK Packet:           1
+Sequence Number:         150776327
+TCP Payload Length:      1424
+
+---------
+PACKET 40
+---------
+Destination MAC Address: a4:5e:60:df:2e:1b
+Source MAC Address:      c4:e9:84:87:60:28
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       1456
+Transport Protocol       6
+Destination IP Address:  192.168.0.101
+Source IP Address:       192.30.252.154
+TCP Source Port:         80
+TCP Destination Port:    59295
+TCP Header Length:       32
+Is SYN Packet:           0
+Is ACK Packet:           1
+Sequence Number:         150777751
+TCP Payload Length:      1424
+
+---------
+PACKET 41
+---------
+Destination MAC Address: a4:5e:60:df:2e:1b
+Source MAC Address:      c4:e9:84:87:60:28
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       1456
+Transport Protocol       6
+Destination IP Address:  192.168.0.101
+Source IP Address:       192.30.252.154
+TCP Source Port:         80
+TCP Destination Port:    59295
+TCP Header Length:       32
+Is SYN Packet:           0
+Is ACK Packet:           1
+Sequence Number:         150779175
+TCP Payload Length:      1424
+
+---------
+PACKET 42
+---------
+Destination MAC Address: c4:e9:84:87:60:28
+Source MAC Address:      a4:5e:60:df:2e:1b
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       44
+Transport Protocol       6
+Destination IP Address:  192.30.252.154
+Source IP Address:       192.168.0.101
+TCP Source Port:         59295
+TCP Destination Port:    80
+TCP Header Length:       44
+Is SYN Packet:           0
+Is ACK Packet:           1
+Sequence Number:         1588273846
+TCP Payload Length:      0
+
+---------
+PACKET 43
+---------
+Destination MAC Address: c4:e9:84:87:60:28
+Source MAC Address:      a4:5e:60:df:2e:1b
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       44
+Transport Protocol       6
+Destination IP Address:  192.30.252.154
+Source IP Address:       192.168.0.101
+TCP Source Port:         59295
+TCP Destination Port:    80
+TCP Header Length:       44
+Is SYN Packet:           0
+Is ACK Packet:           1
+Sequence Number:         1588273846
+TCP Payload Length:      0
+
+---------
+PACKET 44
+---------
+Destination MAC Address: a4:5e:60:df:2e:1b
+Source MAC Address:      c4:e9:84:87:60:28
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       1456
+Transport Protocol       6
+Destination IP Address:  192.168.0.101
+Source IP Address:       192.30.252.154
+TCP Source Port:         80
+TCP Destination Port:    59295
+TCP Header Length:       32
+Is SYN Packet:           0
+Is ACK Packet:           1
+Sequence Number:         150780599
+TCP Payload Length:      1424
+
+---------
+PACKET 45
+---------
+Destination MAC Address: a4:5e:60:df:2e:1b
+Source MAC Address:      c4:e9:84:87:60:28
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       1456
+Transport Protocol       6
+Destination IP Address:  192.168.0.101
+Source IP Address:       192.30.252.154
+TCP Source Port:         80
+TCP Destination Port:    59295
+TCP Header Length:       32
+Is SYN Packet:           0
+Is ACK Packet:           1
+Sequence Number:         150782023
+TCP Payload Length:      1424
+
+---------
+PACKET 46
+---------
+Destination MAC Address: c4:e9:84:87:60:28
+Source MAC Address:      a4:5e:60:df:2e:1b
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       44
+Transport Protocol       6
+Destination IP Address:  192.30.252.154
+Source IP Address:       192.168.0.101
+TCP Source Port:         59295
+TCP Destination Port:    80
+TCP Header Length:       44
+Is SYN Packet:           0
+Is ACK Packet:           1
+Sequence Number:         1588273846
+TCP Payload Length:      0
+
+---------
+PACKET 47
+---------
+Destination MAC Address: a4:5e:60:df:2e:1b
+Source MAC Address:      c4:e9:84:87:60:28
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       1456
+Transport Protocol       6
+Destination IP Address:  192.168.0.101
+Source IP Address:       192.30.252.154
+TCP Source Port:         80
+TCP Destination Port:    59295
+TCP Header Length:       32
+Is SYN Packet:           0
+Is ACK Packet:           1
+Sequence Number:         150783447
+TCP Payload Length:      1424
+
+---------
+PACKET 48
+---------
+Destination MAC Address: c4:e9:84:87:60:28
+Source MAC Address:      a4:5e:60:df:2e:1b
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       52
+Transport Protocol       6
+Destination IP Address:  192.30.252.154
+Source IP Address:       192.168.0.101
+TCP Source Port:         59295
+TCP Destination Port:    80
+TCP Header Length:       52
+Is SYN Packet:           0
+Is ACK Packet:           1
+Sequence Number:         1588273846
+TCP Payload Length:      0
+
+---------
+PACKET 49
+---------
+Destination MAC Address: a4:5e:60:df:2e:1b
+Source MAC Address:      c4:e9:84:87:60:28
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       1456
+Transport Protocol       6
+Destination IP Address:  192.168.0.101
+Source IP Address:       192.30.252.154
+TCP Source Port:         80
+TCP Destination Port:    59295
+TCP Header Length:       32
+Is SYN Packet:           0
+Is ACK Packet:           1
+Sequence Number:         150784871
+TCP Payload Length:      1424
+
+---------
+PACKET 50
+---------
+Destination MAC Address: c4:e9:84:87:60:28
+Source MAC Address:      a4:5e:60:df:2e:1b
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       52
+Transport Protocol       6
+Destination IP Address:  192.30.252.154
+Source IP Address:       192.168.0.101
+TCP Source Port:         59295
+TCP Destination Port:    80
+TCP Header Length:       52
+Is SYN Packet:           0
+Is ACK Packet:           1
+Sequence Number:         1588273846
+TCP Payload Length:      0
+
+---------
+PACKET 51
+---------
+Destination MAC Address: a4:5e:60:df:2e:1b
+Source MAC Address:      c4:e9:84:87:60:28
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       1456
+Transport Protocol       6
+Destination IP Address:  192.168.0.101
+Source IP Address:       192.30.252.154
+TCP Source Port:         80
+TCP Destination Port:    59295
+TCP Header Length:       32
+Is SYN Packet:           0
+Is ACK Packet:           1
+Sequence Number:         150786295
+TCP Payload Length:      1424
+
+---------
+PACKET 52
+---------
+Destination MAC Address: c4:e9:84:87:60:28
+Source MAC Address:      a4:5e:60:df:2e:1b
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       52
+Transport Protocol       6
+Destination IP Address:  192.30.252.154
+Source IP Address:       192.168.0.101
+TCP Source Port:         59295
+TCP Destination Port:    80
+TCP Header Length:       52
+Is SYN Packet:           0
+Is ACK Packet:           1
+Sequence Number:         1588273846
+TCP Payload Length:      0
+
+---------
+PACKET 53
+---------
+Destination MAC Address: a4:5e:60:df:2e:1b
+Source MAC Address:      c4:e9:84:87:60:28
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       1456
+Transport Protocol       6
+Destination IP Address:  192.168.0.101
+Source IP Address:       192.30.252.154
+TCP Source Port:         80
+TCP Destination Port:    59295
+TCP Header Length:       32
+Is SYN Packet:           0
+Is ACK Packet:           1
+Sequence Number:         150787719
+TCP Payload Length:      1424
+
+---------
+PACKET 54
+---------
+Destination MAC Address: c4:e9:84:87:60:28
+Source MAC Address:      a4:5e:60:df:2e:1b
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       52
+Transport Protocol       6
+Destination IP Address:  192.30.252.154
+Source IP Address:       192.168.0.101
+TCP Source Port:         59295
+TCP Destination Port:    80
+TCP Header Length:       52
+Is SYN Packet:           0
+Is ACK Packet:           1
+Sequence Number:         1588273846
+TCP Payload Length:      0
+
+---------
+PACKET 55
+---------
+Destination MAC Address: a4:5e:60:df:2e:1b
+Source MAC Address:      c4:e9:84:87:60:28
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       1456
+Transport Protocol       6
+Destination IP Address:  192.168.0.101
+Source IP Address:       192.30.252.154
+TCP Source Port:         80
+TCP Destination Port:    59295
+TCP Header Length:       32
+Is SYN Packet:           0
+Is ACK Packet:           1
+Sequence Number:         150789143
+TCP Payload Length:      1424
+
+---------
+PACKET 56
+---------
+Destination MAC Address: c4:e9:84:87:60:28
+Source MAC Address:      a4:5e:60:df:2e:1b
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       52
+Transport Protocol       6
+Destination IP Address:  192.30.252.154
+Source IP Address:       192.168.0.101
+TCP Source Port:         59295
+TCP Destination Port:    80
+TCP Header Length:       52
+Is SYN Packet:           0
+Is ACK Packet:           1
+Sequence Number:         1588273846
+TCP Payload Length:      0
+
+---------
+PACKET 57
+---------
+Destination MAC Address: a4:5e:60:df:2e:1b
+Source MAC Address:      c4:e9:84:87:60:28
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       1456
+Transport Protocol       6
+Destination IP Address:  192.168.0.101
+Source IP Address:       192.30.252.154
+TCP Source Port:         80
+TCP Destination Port:    59295
+TCP Header Length:       32
+Is SYN Packet:           0
+Is ACK Packet:           1
+Sequence Number:         150790567
+TCP Payload Length:      1424
+
+---------
+PACKET 58
+---------
+Destination MAC Address: c4:e9:84:87:60:28
+Source MAC Address:      a4:5e:60:df:2e:1b
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       52
+Transport Protocol       6
+Destination IP Address:  192.30.252.154
+Source IP Address:       192.168.0.101
+TCP Source Port:         59295
+TCP Destination Port:    80
+TCP Header Length:       52
+Is SYN Packet:           0
+Is ACK Packet:           1
+Sequence Number:         1588273846
+TCP Payload Length:      0
+
+---------
+PACKET 59
+---------
+Destination MAC Address: a4:5e:60:df:2e:1b
+Source MAC Address:      c4:e9:84:87:60:28
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       1456
+Transport Protocol       6
+Destination IP Address:  192.168.0.101
+Source IP Address:       192.30.252.154
+TCP Source Port:         80
+TCP Destination Port:    59295
+TCP Header Length:       32
+Is SYN Packet:           0
+Is ACK Packet:           1
+Sequence Number:         150791991
+TCP Payload Length:      1424
+
+---------
+PACKET 60
+---------
+Destination MAC Address: c4:e9:84:87:60:28
+Source MAC Address:      a4:5e:60:df:2e:1b
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       52
+Transport Protocol       6
+Destination IP Address:  192.30.252.154
+Source IP Address:       192.168.0.101
+TCP Source Port:         59295
+TCP Destination Port:    80
+TCP Header Length:       52
+Is SYN Packet:           0
+Is ACK Packet:           1
+Sequence Number:         1588273846
+TCP Payload Length:      0
+
+---------
+PACKET 61
+---------
+Destination MAC Address: a4:5e:60:df:2e:1b
+Source MAC Address:      c4:e9:84:87:60:28
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       1456
+Transport Protocol       6
+Destination IP Address:  192.168.0.101
+Source IP Address:       192.30.252.154
+TCP Source Port:         80
+TCP Destination Port:    59295
+TCP Header Length:       32
+Is SYN Packet:           0
+Is ACK Packet:           1
+Sequence Number:         150793415
+TCP Payload Length:      1424
+
+---------
+PACKET 62
+---------
+Destination MAC Address: c4:e9:84:87:60:28
+Source MAC Address:      a4:5e:60:df:2e:1b
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       52
+Transport Protocol       6
+Destination IP Address:  192.30.252.154
+Source IP Address:       192.168.0.101
+TCP Source Port:         59295
+TCP Destination Port:    80
+TCP Header Length:       52
+Is SYN Packet:           0
+Is ACK Packet:           1
+Sequence Number:         1588273846
+TCP Payload Length:      0
+
+---------
+PACKET 63
+---------
+Destination MAC Address: a4:5e:60:df:2e:1b
+Source MAC Address:      c4:e9:84:87:60:28
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       1456
+Transport Protocol       6
+Destination IP Address:  192.168.0.101
+Source IP Address:       192.30.252.154
+TCP Source Port:         80
+TCP Destination Port:    59295
+TCP Header Length:       32
+Is SYN Packet:           0
+Is ACK Packet:           1
+Sequence Number:         150794839
+TCP Payload Length:      1424
+
+---------
+PACKET 64
+---------
+Destination MAC Address: a4:5e:60:df:2e:1b
+Source MAC Address:      c4:e9:84:87:60:28
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       1456
+Transport Protocol       6
+Destination IP Address:  192.168.0.101
+Source IP Address:       192.30.252.154
+TCP Source Port:         80
+TCP Destination Port:    59295
+TCP Header Length:       32
+Is SYN Packet:           0
+Is ACK Packet:           1
+Sequence Number:         150776327
+TCP Payload Length:      1424
+
+---------
+PACKET 65
+---------
+Destination MAC Address: c4:e9:84:87:60:28
+Source MAC Address:      a4:5e:60:df:2e:1b
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       44
+Transport Protocol       6
+Destination IP Address:  192.30.252.154
+Source IP Address:       192.168.0.101
+TCP Source Port:         59295
+TCP Destination Port:    80
+TCP Header Length:       44
+Is SYN Packet:           0
+Is ACK Packet:           1
+Sequence Number:         1588273846
+TCP Payload Length:      0
+
+---------
+PACKET 66
+---------
+Destination MAC Address: a4:5e:60:df:2e:1b
+Source MAC Address:      c4:e9:84:87:60:28
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       1456
+Transport Protocol       6
+Destination IP Address:  192.168.0.101
+Source IP Address:       192.30.252.154
+TCP Source Port:         80
+TCP Destination Port:    59295
+TCP Header Length:       32
+Is SYN Packet:           0
+Is ACK Packet:           1
+Sequence Number:         150782023
+TCP Payload Length:      1424
+
+---------
+PACKET 67
+---------
+Destination MAC Address: a4:5e:60:df:2e:1b
+Source MAC Address:      c4:e9:84:87:60:28
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       1456
+Transport Protocol       6
+Destination IP Address:  192.168.0.101
+Source IP Address:       192.30.252.154
+TCP Source Port:         80
+TCP Destination Port:    59295
+TCP Header Length:       32
+Is SYN Packet:           0
+Is ACK Packet:           1
+Sequence Number:         150796263
+TCP Payload Length:      1424
+
+---------
+PACKET 68
+---------
+Destination MAC Address: c4:e9:84:87:60:28
+Source MAC Address:      a4:5e:60:df:2e:1b
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       32
+Transport Protocol       6
+Destination IP Address:  192.30.252.154
+Source IP Address:       192.168.0.101
+TCP Source Port:         59295
+TCP Destination Port:    80
+TCP Header Length:       32
+Is SYN Packet:           0
+Is ACK Packet:           1
+Sequence Number:         1588273846
+TCP Payload Length:      0
+
+---------
+PACKET 69
+---------
+Destination MAC Address: a4:5e:60:df:2e:1b
+Source MAC Address:      c4:e9:84:87:60:28
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       1456
+Transport Protocol       6
+Destination IP Address:  192.168.0.101
+Source IP Address:       192.30.252.154
+TCP Source Port:         80
+TCP Destination Port:    59295
+TCP Header Length:       32
+Is SYN Packet:           0
+Is ACK Packet:           1
+Sequence Number:         150797687
+TCP Payload Length:      1424
+
+---------
+PACKET 70
+---------
+Destination MAC Address: c4:e9:84:87:60:28
+Source MAC Address:      a4:5e:60:df:2e:1b
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       32
+Transport Protocol       6
+Destination IP Address:  192.30.252.154
+Source IP Address:       192.168.0.101
+TCP Source Port:         59295
+TCP Destination Port:    80
+TCP Header Length:       32
+Is SYN Packet:           0
+Is ACK Packet:           1
+Sequence Number:         1588273846
+TCP Payload Length:      0
+
+---------
+PACKET 71
+---------
+Destination MAC Address: a4:5e:60:df:2e:1b
+Source MAC Address:      c4:e9:84:87:60:28
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       1456
+Transport Protocol       6
+Destination IP Address:  192.168.0.101
+Source IP Address:       192.30.252.154
+TCP Source Port:         80
+TCP Destination Port:    59295
+TCP Header Length:       32
+Is SYN Packet:           0
+Is ACK Packet:           1
+Sequence Number:         150799111
+TCP Payload Length:      1424
+
+---------
+PACKET 72
+---------
+Destination MAC Address: a4:5e:60:df:2e:1b
+Source MAC Address:      c4:e9:84:87:60:28
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       1456
+Transport Protocol       6
+Destination IP Address:  192.168.0.101
+Source IP Address:       192.30.252.154
+TCP Source Port:         80
+TCP Destination Port:    59295
+TCP Header Length:       32
+Is SYN Packet:           0
+Is ACK Packet:           1
+Sequence Number:         150800535
+TCP Payload Length:      1424
+
+---------
+PACKET 73
+---------
+Destination MAC Address: c4:e9:84:87:60:28
+Source MAC Address:      a4:5e:60:df:2e:1b
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       32
+Transport Protocol       6
+Destination IP Address:  192.30.252.154
+Source IP Address:       192.168.0.101
+TCP Source Port:         59295
+TCP Destination Port:    80
+TCP Header Length:       32
+Is SYN Packet:           0
+Is ACK Packet:           1
+Sequence Number:         1588273846
+TCP Payload Length:      0
+
+---------
+PACKET 74
+---------
+Destination MAC Address: a4:5e:60:df:2e:1b
+Source MAC Address:      c4:e9:84:87:60:28
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       1456
+Transport Protocol       6
+Destination IP Address:  192.168.0.101
+Source IP Address:       192.30.252.154
+TCP Source Port:         80
+TCP Destination Port:    59295
+TCP Header Length:       32
+Is SYN Packet:           0
+Is ACK Packet:           1
+Sequence Number:         150801959
+TCP Payload Length:      1424
+
+---------
+PACKET 75
+---------
+Destination MAC Address: a4:5e:60:df:2e:1b
+Source MAC Address:      c4:e9:84:87:60:28
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       1456
+Transport Protocol       6
+Destination IP Address:  192.168.0.101
+Source IP Address:       192.30.252.154
+TCP Source Port:         80
+TCP Destination Port:    59295
+TCP Header Length:       32
+Is SYN Packet:           0
+Is ACK Packet:           1
+Sequence Number:         150803383
+TCP Payload Length:      1424
+
+---------
+PACKET 76
+---------
+Destination MAC Address: a4:5e:60:df:2e:1b
+Source MAC Address:      c4:e9:84:87:60:28
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       1456
+Transport Protocol       6
+Destination IP Address:  192.168.0.101
+Source IP Address:       192.30.252.154
+TCP Source Port:         80
+TCP Destination Port:    59295
+TCP Header Length:       32
+Is SYN Packet:           0
+Is ACK Packet:           1
+Sequence Number:         150804807
+TCP Payload Length:      1424
+
+---------
+PACKET 77
+---------
+Destination MAC Address: a4:5e:60:df:2e:1b
+Source MAC Address:      c4:e9:84:87:60:28
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       1456
+Transport Protocol       6
+Destination IP Address:  192.168.0.101
+Source IP Address:       192.30.252.154
+TCP Source Port:         80
+TCP Destination Port:    59295
+TCP Header Length:       32
+Is SYN Packet:           0
+Is ACK Packet:           1
+Sequence Number:         150806231
+TCP Payload Length:      1424
+
+---------
+PACKET 78
+---------
+Destination MAC Address: c4:e9:84:87:60:28
+Source MAC Address:      a4:5e:60:df:2e:1b
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       44
+Transport Protocol       6
+Destination IP Address:  192.30.252.154
+Source IP Address:       192.168.0.101
+TCP Source Port:         59295
+TCP Destination Port:    80
+TCP Header Length:       44
+Is SYN Packet:           0
+Is ACK Packet:           1
+Sequence Number:         1588273846
+TCP Payload Length:      0
+
+---------
+PACKET 79
+---------
+Destination MAC Address: a4:5e:60:df:2e:1b
+Source MAC Address:      c4:e9:84:87:60:28
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       1456
+Transport Protocol       6
+Destination IP Address:  192.168.0.101
+Source IP Address:       192.30.252.154
+TCP Source Port:         80
+TCP Destination Port:    59295
+TCP Header Length:       32
+Is SYN Packet:           0
+Is ACK Packet:           1
+Sequence Number:         150801959
+TCP Payload Length:      1424
+
+---------
+PACKET 80
+---------
+Destination MAC Address: a4:5e:60:df:2e:1b
+Source MAC Address:      c4:e9:84:87:60:28
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       1456
+Transport Protocol       6
+Destination IP Address:  192.168.0.101
+Source IP Address:       192.30.252.154
+TCP Source Port:         80
+TCP Destination Port:    59295
+TCP Header Length:       32
+Is SYN Packet:           0
+Is ACK Packet:           1
+Sequence Number:         150807655
+TCP Payload Length:      1424
+
+---------
+PACKET 81
+---------
+Destination MAC Address: c4:e9:84:87:60:28
+Source MAC Address:      a4:5e:60:df:2e:1b
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       32
+Transport Protocol       6
+Destination IP Address:  192.30.252.154
+Source IP Address:       192.168.0.101
+TCP Source Port:         59295
+TCP Destination Port:    80
+TCP Header Length:       32
+Is SYN Packet:           0
+Is ACK Packet:           1
+Sequence Number:         1588273846
+TCP Payload Length:      0
+
+---------
+PACKET 82
+---------
+Destination MAC Address: c4:e9:84:87:60:28
+Source MAC Address:      a4:5e:60:df:2e:1b
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       32
+Transport Protocol       6
+Destination IP Address:  192.30.252.154
+Source IP Address:       192.168.0.101
+TCP Source Port:         59295
+TCP Destination Port:    80
+TCP Header Length:       32
+Is SYN Packet:           0
+Is ACK Packet:           1
+Sequence Number:         1588273846
+TCP Payload Length:      0
+
+---------
+PACKET 83
+---------
+Destination MAC Address: a4:5e:60:df:2e:1b
+Source MAC Address:      c4:e9:84:87:60:28
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       1456
+Transport Protocol       6
+Destination IP Address:  192.168.0.101
+Source IP Address:       192.30.252.154
+TCP Source Port:         80
+TCP Destination Port:    59295
+TCP Header Length:       32
+Is SYN Packet:           0
+Is ACK Packet:           1
+Sequence Number:         150809079
+TCP Payload Length:      1424
+
+---------
+PACKET 84
+---------
+Destination MAC Address: a4:5e:60:df:2e:1b
+Source MAC Address:      c4:e9:84:87:60:28
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       1456
+Transport Protocol       6
+Destination IP Address:  192.168.0.101
+Source IP Address:       192.30.252.154
+TCP Source Port:         80
+TCP Destination Port:    59295
+TCP Header Length:       32
+Is SYN Packet:           0
+Is ACK Packet:           1
+Sequence Number:         150810503
+TCP Payload Length:      1424
+
+---------
+PACKET 85
+---------
+Destination MAC Address: c4:e9:84:87:60:28
+Source MAC Address:      a4:5e:60:df:2e:1b
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       32
+Transport Protocol       6
+Destination IP Address:  192.30.252.154
+Source IP Address:       192.168.0.101
+TCP Source Port:         59295
+TCP Destination Port:    80
+TCP Header Length:       32
+Is SYN Packet:           0
+Is ACK Packet:           1
+Sequence Number:         1588273846
+TCP Payload Length:      0
+
+---------
+PACKET 86
+---------
+Destination MAC Address: a4:5e:60:df:2e:1b
+Source MAC Address:      c4:e9:84:87:60:28
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       1456
+Transport Protocol       6
+Destination IP Address:  192.168.0.101
+Source IP Address:       192.30.252.154
+TCP Source Port:         80
+TCP Destination Port:    59295
+TCP Header Length:       32
+Is SYN Packet:           0
+Is ACK Packet:           1
+Sequence Number:         150811927
+TCP Payload Length:      1424
+
+---------
+PACKET 87
+---------
+Destination MAC Address: a4:5e:60:df:2e:1b
+Source MAC Address:      c4:e9:84:87:60:28
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       1456
+Transport Protocol       6
+Destination IP Address:  192.168.0.101
+Source IP Address:       192.30.252.154
+TCP Source Port:         80
+TCP Destination Port:    59295
+TCP Header Length:       32
+Is SYN Packet:           0
+Is ACK Packet:           1
+Sequence Number:         150813351
+TCP Payload Length:      1424
+
+---------
+PACKET 88
+---------
+Destination MAC Address: a4:5e:60:df:2e:1b
+Source MAC Address:      c4:e9:84:87:60:28
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       1456
+Transport Protocol       6
+Destination IP Address:  192.168.0.101
+Source IP Address:       192.30.252.154
+TCP Source Port:         80
+TCP Destination Port:    59295
+TCP Header Length:       32
+Is SYN Packet:           0
+Is ACK Packet:           1
+Sequence Number:         150814775
+TCP Payload Length:      1424
+
+---------
+PACKET 89
+---------
+Destination MAC Address: c4:e9:84:87:60:28
+Source MAC Address:      a4:5e:60:df:2e:1b
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       32
+Transport Protocol       6
+Destination IP Address:  192.30.252.154
+Source IP Address:       192.168.0.101
+TCP Source Port:         59295
+TCP Destination Port:    80
+TCP Header Length:       32
+Is SYN Packet:           0
+Is ACK Packet:           1
+Sequence Number:         1588273846
+TCP Payload Length:      0
+
+---------
+PACKET 90
+---------
+Destination MAC Address: c4:e9:84:87:60:28
+Source MAC Address:      a4:5e:60:df:2e:1b
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       32
+Transport Protocol       6
+Destination IP Address:  192.30.252.154
+Source IP Address:       192.168.0.101
+TCP Source Port:         59295
+TCP Destination Port:    80
+TCP Header Length:       32
+Is SYN Packet:           0
+Is ACK Packet:           1
+Sequence Number:         1588273846
+TCP Payload Length:      0
+
+---------
+PACKET 91
+---------
+Destination MAC Address: a4:5e:60:df:2e:1b
+Source MAC Address:      c4:e9:84:87:60:28
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       1456
+Transport Protocol       6
+Destination IP Address:  192.168.0.101
+Source IP Address:       192.30.252.154
+TCP Source Port:         80
+TCP Destination Port:    59295
+TCP Header Length:       32
+Is SYN Packet:           0
+Is ACK Packet:           1
+Sequence Number:         150816199
+TCP Payload Length:      1424
+
+---------
+PACKET 92
+---------
+Destination MAC Address: a4:5e:60:df:2e:1b
+Source MAC Address:      c4:e9:84:87:60:28
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       1456
+Transport Protocol       6
+Destination IP Address:  192.168.0.101
+Source IP Address:       192.30.252.154
+TCP Source Port:         80
+TCP Destination Port:    59295
+TCP Header Length:       32
+Is SYN Packet:           0
+Is ACK Packet:           1
+Sequence Number:         150817623
+TCP Payload Length:      1424
+
+---------
+PACKET 93
+---------
+Destination MAC Address: a4:5e:60:df:2e:1b
+Source MAC Address:      c4:e9:84:87:60:28
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       1456
+Transport Protocol       6
+Destination IP Address:  192.168.0.101
+Source IP Address:       192.30.252.154
+TCP Source Port:         80
+TCP Destination Port:    59295
+TCP Header Length:       32
+Is SYN Packet:           0
+Is ACK Packet:           1
+Sequence Number:         150819047
+TCP Payload Length:      1424
+
+---------
+PACKET 94
+---------
+Destination MAC Address: c4:e9:84:87:60:28
+Source MAC Address:      a4:5e:60:df:2e:1b
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       32
+Transport Protocol       6
+Destination IP Address:  192.30.252.154
+Source IP Address:       192.168.0.101
+TCP Source Port:         59295
+TCP Destination Port:    80
+TCP Header Length:       32
+Is SYN Packet:           0
+Is ACK Packet:           1
+Sequence Number:         1588273846
+TCP Payload Length:      0
+
+---------
+PACKET 95
+---------
+Destination MAC Address: a4:5e:60:df:2e:1b
+Source MAC Address:      c4:e9:84:87:60:28
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       1456
+Transport Protocol       6
+Destination IP Address:  192.168.0.101
+Source IP Address:       192.30.252.154
+TCP Source Port:         80
+TCP Destination Port:    59295
+TCP Header Length:       32
+Is SYN Packet:           0
+Is ACK Packet:           1
+Sequence Number:         150820471
+TCP Payload Length:      1424
+
+---------
+PACKET 96
+---------
+Destination MAC Address: a4:5e:60:df:2e:1b
+Source MAC Address:      c4:e9:84:87:60:28
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       418
+Transport Protocol       6
+Destination IP Address:  192.168.0.101
+Source IP Address:       192.30.252.154
+TCP Source Port:         80
+TCP Destination Port:    59295
+TCP Header Length:       32
+Is SYN Packet:           0
+Is ACK Packet:           1
+Sequence Number:         150821895
+TCP Payload Length:      386
+
+---------
+PACKET 97
+---------
+Destination MAC Address: c4:e9:84:87:60:28
+Source MAC Address:      a4:5e:60:df:2e:1b
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       32
+Transport Protocol       6
+Destination IP Address:  192.30.252.154
+Source IP Address:       192.168.0.101
+TCP Source Port:         59295
+TCP Destination Port:    80
+TCP Header Length:       32
+Is SYN Packet:           0
+Is ACK Packet:           1
+Sequence Number:         1588273846
+TCP Payload Length:      0
+
+---------
+PACKET 98
+---------
+Destination MAC Address: c4:e9:84:87:60:28
+Source MAC Address:      a4:5e:60:df:2e:1b
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       32
+Transport Protocol       6
+Destination IP Address:  192.30.252.154
+Source IP Address:       192.168.0.101
+TCP Source Port:         59295
+TCP Destination Port:    80
+TCP Header Length:       32
+Is SYN Packet:           0
+Is ACK Packet:           1
+Sequence Number:         1588273846
+TCP Payload Length:      0
+
+---------
+PACKET 99
+---------
+Destination MAC Address: a4:5e:60:df:2e:1b
+Source MAC Address:      c4:e9:84:87:60:28
+EtherType:               0x800
+IP Header Length:        20
+IP Payload Length:       32
+Transport Protocol       6
+Destination IP Address:  192.168.0.101
+Source IP Address:       192.30.252.154
+TCP Source Port:         80
+TCP Destination Port:    59295
+TCP Header Length:       32
+Is SYN Packet:           0
+Is ACK Packet:           1
+Sequence Number:         150822282
+TCP Payload Length:      0
