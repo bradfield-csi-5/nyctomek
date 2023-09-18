@@ -86,7 +86,11 @@ int main(int argc, char *argv[]) {
     int numPayloadNodes = 0;
     while(1) {
 
-        // Packet Header.
+        //////////////////////////////
+        //                          //
+        //      Packet Header       //
+        //                          //
+        //////////////////////////////
 
         // Move to the `data captured` field of the next packet.
        Seek(fd, offsetToNextPacket + PCAP_LEN_TIMESTAMPS, SEEK_CUR);
@@ -267,6 +271,12 @@ int main(int argc, char *argv[]) {
         }
         numPackets++;
     }
+
+    //////////////////////////////
+    //                          //
+    //    Reassemble Payload    //
+    //                          //
+    //////////////////////////////
 
     TCPPayload_t **sortedPayloads = (TCPPayload_t **)calloc(sizeof(TCPPayload_t*), numPayloadNodes);
     prev = NULL;
