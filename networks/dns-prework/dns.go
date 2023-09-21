@@ -265,9 +265,10 @@ func queryDomainNameService(domainName string, dnsServer string) int32 {
 		Addr: ipAddress,
 	}
 
+	localIPAddress := [4]byte{192, 168, 0, 135}
 	localAddress := &unix.SockaddrInet4{
 		Port: 1983,
-		Addr: [4]byte{192, 168, 0, 135},
+		Addr: localIPAddress,
 	}
 	err = unix.Bind(socketFD, localAddress)
 	checkErr(err)
