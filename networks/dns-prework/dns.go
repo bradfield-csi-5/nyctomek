@@ -4,10 +4,11 @@ import (
 	"encoding/binary"
 	"fmt"
 	"log"
-	"net"
 	"slices"
 	"strconv"
 	"strings"
+
+	"golang.org/x/sys/unix"
 )
 
 const HEADER_MASK_QUERY_OR_RESPONSE = 1 << 31
@@ -104,7 +105,6 @@ func encodeDNSHeader(header *DNSHeader) []byte {
 	headerBuffer = binary.BigEndian.AppendUint16(headerBuffer, header.additionalRecordsCount)
 
 	return headerBuffer
-
 }
 
 func decodeDNSHeader(headerBuffer []byte) DNSHeader {
@@ -212,7 +212,6 @@ func decodeResourceRecord(responseBuffer []byte, resourceRecordBuffer []byte, by
 		bytesDecodedFromDomain := 0
 		resourceRecord.domainName = decompressDomainName(resourceRecordBuffer, responseBuffer, &bytesDecodedFromDomain)
 		*bytesDecoded += bytesDecodedFromDomain
-		//domainNameLocation := resourceRecordBuffer[1]		//resourceRecord.domainName = decodeDomainName(responseBuffer[domainNameLocation:], true)
 		typeIndex = bytesDecodedFromDomain
 	} else {
 		resourceRecord.domainName = decodeDomainName(resourceRecordBuffer, true)
@@ -250,7 +249,6 @@ func decodeResourceRecord(responseBuffer []byte, resourceRecordBuffer []byte, by
 			bytesDecodedFromDomain := 0
 			resourceRecord.resourceData = decompressDomainName(resourceRecordBuffer[typeIndex+10:], responseBuffer, &bytesDecodedFromDomain)
 			*bytesDecoded += *&bytesDecodedFromDomain
-			//*bytesDecoded += len(resourceRecord.resourceData) + 2
 		}
 	}
 	return resourceRecord
@@ -258,11 +256,24 @@ func decodeResourceRecord(responseBuffer []byte, resourceRecordBuffer []byte, by
 
 func queryDomainNameService(domainName string, dnsServer string) int32 {
 
-	con, err := net.Dial("udp", dnsServer+":53")
-
+	socketFD, err := unix.Socket(unix.AF_INET, unix.SOCK_DGRAM, unix.IPPROTO_IP)
 	checkErr(err)
 
-	defer con.Close()
+	ipAddress := [4]byte{8, 8, 8, 8}
+	serverAddress := &unix.SockaddrInet4{
+		Port: 53,
+		Addr: ipAddress,
+	}
+
+	localAddress := &unix.SockaddrInet4{
+		Port: 1983,
+		Addr: [4]byte{192, 168, 0, 135},
+	}
+	err = unix.Bind(socketFD, localAddress)
+	checkErr(err)
+
+	err = unix.Connect(socketFD, serverAddress)
+	checkErr(err)
 
 	header := DNSHeader{
 		ID:               1000,
@@ -279,13 +290,13 @@ func queryDomainNameService(domainName string, dnsServer string) int32 {
 
 	requestBuffer := append(encodeDNSHeader(&header), encodeDNSQuestion(&question)...)
 
-	_, err = con.Write([]byte(requestBuffer))
+	err = unix.Sendmsg(socketFD, []byte(requestBuffer), nil, serverAddress, unix.MSG_DONTWAIT)
 
 	checkErr(err)
 
 	reply := make([]byte, 1024)
 
-	_, err = con.Read(reply)
+	_, _, err = unix.Recvfrom(socketFD, reply, 0)
 
 	checkErr(err)
 
@@ -310,6 +321,7 @@ func queryDomainNameService(domainName string, dnsServer string) int32 {
 		printResourceRecord(&resourceRecord)
 	}
 
+	unix.Close(socketFD)
 	return 0
 }
 
