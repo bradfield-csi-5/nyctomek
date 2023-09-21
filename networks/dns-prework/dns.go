@@ -75,7 +75,7 @@ const (
 	RESOURCE_RECORD_CLASS_HS ResourceRecordClass = 4
 )
 
-type ResourceRecord struct {
+type DNSResourceRecord struct {
 	domainName          string
 	resourceRecordType  ResourceRecordType
 	resourceRecordClass ResourceRecordClass
@@ -143,11 +143,48 @@ func encodeDNSQuestion(question *DNSQuestion) []byte {
 	return questionBuffer
 }
 
-func decodeDomainName(buffer []byte) string {
+func decompressDomainName(buffer []byte, responseBuffer []byte, bytesDecoded *int) string {
+	domainNameBuffer := make([]byte, len(buffer))
+	var domainNameSuffix string
+	src := 0
+	dest := 0
+	for ; src < len(buffer); src++ {
+		if buffer[src] == 0 {
+			src++
+			break
+		}
+		if buffer[src] < 64 {
+			if src > 0 || *bytesDecoded > 0 {
+				domainNameBuffer[dest] = '.'
+				dest++
+			}
+		} else if (buffer[src] & 0x80) != 0 {
+			domainNameLocation := buffer[src+1]
+
+			bytesDecodedTemp := src // HACK: Hint to the recursive call to *not* skip the dot.
+			domainNameSuffix = decompressDomainName(responseBuffer[domainNameLocation:], responseBuffer, &bytesDecodedTemp)
+			src += 2 // Account for the `c0` & offset byte.
+			break
+		} else {
+			domainNameBuffer[dest] = buffer[src]
+			dest++
+		}
+	}
+	*bytesDecoded = src
+	return string(domainNameBuffer[:dest]) + domainNameSuffix
+}
+
+func decodeDomainName(buffer []byte, skipDot bool) string {
 	index := slices.Index(buffer, 0)
 	if index > 0 {
-		sliceWithDomainName := make([]byte, index-1)
-		copy(sliceWithDomainName, buffer[1:index])
+		start := 0
+		sliceLen := index
+		if skipDot {
+			start++
+			sliceLen--
+		}
+		sliceWithDomainName := make([]byte, sliceLen)
+		copy(sliceWithDomainName, buffer[start:index])
 		for i, v := range sliceWithDomainName {
 			if v < 64 {
 				sliceWithDomainName[i] = '.'
@@ -160,7 +197,7 @@ func decodeDomainName(buffer []byte) string {
 
 func decodeDNSQuestion(questionBuffer []byte, bytesDecoded *int) DNSQuestion {
 	var question DNSQuestion
-	question.domainName = decodeDomainName(questionBuffer)
+	question.domainName = decodeDomainName(questionBuffer, true)
 	typeIndex := len(question.domainName) + 2
 	question.questionType = QuestionType(binary.BigEndian.Uint16(questionBuffer[typeIndex:]))
 	question.classType = ClassType(binary.BigEndian.Uint16(questionBuffer[typeIndex+2:]))
@@ -168,15 +205,17 @@ func decodeDNSQuestion(questionBuffer []byte, bytesDecoded *int) DNSQuestion {
 	return question
 }
 
-func decodeResourceRecord(responseBuffer []byte, resourceRecordBuffer []byte, bytesDecoded *int) ResourceRecord {
-	var resourceRecord ResourceRecord
+func decodeResourceRecord(responseBuffer []byte, resourceRecordBuffer []byte, bytesDecoded *int) DNSResourceRecord {
+	var resourceRecord DNSResourceRecord
 	typeIndex := 0
 	if (resourceRecordBuffer[0] & 0x80) != 0 {
-		domainNameLocation := resourceRecordBuffer[1]
-		resourceRecord.domainName = decodeDomainName(responseBuffer[domainNameLocation:])
-		typeIndex = 2
+		bytesDecodedFromDomain := 0
+		resourceRecord.domainName = decompressDomainName(resourceRecordBuffer, responseBuffer, &bytesDecodedFromDomain)
+		*bytesDecoded += bytesDecodedFromDomain
+		//domainNameLocation := resourceRecordBuffer[1]		//resourceRecord.domainName = decodeDomainName(responseBuffer[domainNameLocation:], true)
+		typeIndex = bytesDecodedFromDomain
 	} else {
-		resourceRecord.domainName = decodeDomainName(resourceRecordBuffer)
+		resourceRecord.domainName = decodeDomainName(resourceRecordBuffer, true)
 		typeIndex = len(resourceRecord.domainName) + 2
 	}
 	resourceRecord.resourceRecordType = ResourceRecordType(
@@ -187,6 +226,8 @@ func decodeResourceRecord(responseBuffer []byte, resourceRecordBuffer []byte, by
 		binary.BigEndian.Uint32(resourceRecordBuffer[typeIndex+4:])
 	resourceRecord.resourceDataLength =
 		binary.BigEndian.Uint16(resourceRecordBuffer[typeIndex+8:])
+
+	*bytesDecoded = typeIndex + 10
 
 	if resourceRecord.resourceRecordType == RESOURCE_RECORD_TYPE_A &&
 		resourceRecord.resourceRecordClass == RESOURCE_RECORD_CLASS_IN {
@@ -199,8 +240,19 @@ func decodeResourceRecord(responseBuffer []byte, resourceRecordBuffer []byte, by
 		rdData = append(rdData, byte('.'))
 		rdData = append(rdData, strconv.Itoa(int(resourceRecordBuffer[typeIndex+13]))...)
 		resourceRecord.resourceData = string(rdData)
+		*bytesDecoded += 4
+	} else if resourceRecord.resourceRecordType == RESOURCE_RECORD_TYPE_CNAME {
+		if (resourceRecordBuffer[typeIndex+10] & 0x80) != 0 {
+			domainNameLocation := resourceRecordBuffer[typeIndex+11]
+			resourceRecord.resourceData = decodeDomainName(responseBuffer[domainNameLocation:], true)
+			*bytesDecoded += 2
+		} else {
+			bytesDecodedFromDomain := 0
+			resourceRecord.resourceData = decompressDomainName(resourceRecordBuffer[typeIndex+10:], responseBuffer, &bytesDecodedFromDomain)
+			*bytesDecoded += *&bytesDecodedFromDomain
+			//*bytesDecoded += len(resourceRecord.resourceData) + 2
+		}
 	}
-	*bytesDecoded = typeIndex + 14
 	return resourceRecord
 }
 
@@ -235,17 +287,74 @@ func queryDomainNameService(domainName string, dnsServer string) int32 {
 
 	_, err = con.Read(reply)
 
-	responseHeader := decodeDNSHeader(reply)
-	var bytesDecoded int
-	responseQuestion := decodeDNSQuestion(reply[12:], &bytesDecoded)
-	resourceRecord := decodeResourceRecord(reply, reply[12+bytesDecoded:], &bytesDecoded)
-	fmt.Println("Header=", responseHeader)
-	fmt.Println("Question=", responseQuestion)
-	fmt.Println("Resource Record=", resourceRecord)
-
 	checkErr(err)
 
+	responseHeader := decodeDNSHeader(reply)
+
+	fmt.Printf("\nHEADER\n")
+	printHeader(&responseHeader)
+
+	positionInReply := 12
+	bytesDecoded := 0
+	for i := 0; i < int(responseHeader.questionCount); i++ {
+		responseQuestion := decodeDNSQuestion(reply[positionInReply:], &bytesDecoded)
+		positionInReply += bytesDecoded
+		fmt.Printf("\nQUESTION %d\n", i+1)
+		printQuestionRecord(&responseQuestion)
+	}
+
+	for i := 0; i < int(responseHeader.answerCount); i++ {
+		resourceRecord := decodeResourceRecord(reply, reply[positionInReply:], &bytesDecoded)
+		positionInReply += bytesDecoded
+		fmt.Printf("\nANSWER %d\n", i+1)
+		printResourceRecord(&resourceRecord)
+	}
+
 	return 0
+}
+
+func printHeader(header *DNSHeader) {
+
+	fmt.Printf("ID: %d, isQuery: %t, isResponse: %t, opCode: %d, rcode: %d\n",
+		header.ID, header.isQuery, !header.isQuery, header.opCode, header.rcode)
+
+	fmt.Printf("Truncated: %t, Recursion Desired: %t, "+
+		"Recursion Available: %t, Authenticate Data: %t\n",
+		header.truncated, header.recursionDesired,
+		header.recursionAvailable, header.authenticateData)
+
+	fmt.Printf("Authoritative: %t, Questions: %d, Answers: %d, "+
+		"Name Server Records: %d, Additional Records: %d.\n",
+		header.authoritativeAnswer, header.questionCount,
+		header.answerCount, header.nameServerCount,
+		header.additionalRecordsCount)
+}
+
+func printQuestionRecord(question *DNSQuestion) {
+	fmt.Printf("Domain Name: %s\nType: %s\nClass: %d\n",
+		question.domainName, DNSTypeToString(uint16(question.questionType)), question.classType)
+}
+
+func printResourceRecord(resourceRecord *DNSResourceRecord) {
+	fmt.Printf("Domain Name: %s\nType: %s\nClass: %d\nTTL: %d\nData Length: %d\nData: %s\n",
+		resourceRecord.domainName, DNSTypeToString(uint16(resourceRecord.resourceRecordType)),
+		resourceRecord.resourceRecordClass, resourceRecord.TTL,
+		resourceRecord.resourceDataLength, resourceRecord.resourceData)
+}
+
+func DNSTypeToString(dnsType uint16) string {
+	switch dnsType {
+	case 1:
+		return "A"
+	case 2:
+		return "NS"
+	case 5:
+		return "CNAME"
+	case 6:
+		return "SOA"
+	default:
+		return "UNKNOWN"
+	}
 }
 
 func checkErr(err error) {
