@@ -108,3 +108,21 @@ func TestDecodeResourceRecord(t *testing.T) {
 			"\nActual: ", decodedResourceRecordActual, ".")
 	}
 }
+
+func TestDecodeDomainFacebook(t *testing.T) {
+	encodedResponse := []byte("\x03\xe8\x81\x80\x00\x01\x00\x02\x00\x00\x00\x00\x03\x77\x77\x77\x08\x66\x61\x63\x65\x62\x6f\x6f\x6b\x03\x63\x6f\x6d\x00\x00\x01\x00\x01\xc0\x0c\x00\x05\x00\x01\x00\x00\x04\x47\x00\x11\x09\x73\x74\x61\x72\x2d\x6d\x69\x6e\x69\x04\x63\x31\x30\x72\xc0\x10\xc0\x2e\x00\x01\x00\x01\x00\x00\x00\x0e\x00\x04\x9d\xf0\xf1\x23")
+	startingPosition := 46
+	domainName, bytesDecoded := decodeDomain(encodedResponse, startingPosition)
+
+	domainNameExpected := "star-mini.c10r.facebook.com"
+	bytesDecodedExpected := 17
+
+	if domainName != domainNameExpected || bytesDecoded != bytesDecodedExpected {
+		t.Error("decodeDomain() returned unexpected domain or bytes decoded.",
+			"\nExpected: domainName:", domainNameExpected,
+			"bytesDecoded:", bytesDecodedExpected,
+			"\nActual: domainName:", domainName,
+			"bytesDecoded:", bytesDecoded)
+	}
+
+}

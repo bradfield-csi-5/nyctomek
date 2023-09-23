@@ -195,6 +195,58 @@ func decodeDomainName(buffer []byte, skipDot bool) string {
 	return ""
 }
 
+func max(a int, b int) int {
+	if a > b {
+		return a
+	} else {
+		return b
+	}
+}
+
+func decodeDomain(responseBuffer []byte, startPos int) (string, int) {
+	var domainName string
+	bytesDecoded := 0
+
+	domainBuffer := make([]byte, len(responseBuffer))
+	destPos := 0
+	currentPos := startPos
+	maxPos := startPos
+
+	for responseBuffer[currentPos]&80 != 0 {
+		currentPos++
+		maxPos = max(maxPos, currentPos)
+		currentPos = int(responseBuffer[currentPos])
+	}
+
+	numOctets := responseBuffer[currentPos]
+	currentPos++
+
+	for responseBuffer[currentPos] != 0 && currentPos < len(responseBuffer) {
+
+		if numOctets > 0 {
+			domainBuffer[destPos] = responseBuffer[currentPos]
+			numOctets--
+		} else if numOctets == 0 {
+			if responseBuffer[currentPos]&0x80 != 0 {
+				currentPos++
+				maxPos = max(maxPos, currentPos)
+				currentPos = int(responseBuffer[currentPos])
+				continue
+			}
+			numOctets = responseBuffer[currentPos]
+			domainBuffer[destPos] = '.'
+		}
+		destPos++
+		currentPos++
+		maxPos = max(maxPos, currentPos)
+	}
+
+	domainName = string(domainBuffer[:destPos])
+	bytesDecoded = maxPos - startPos + 1
+
+	return domainName, bytesDecoded
+}
+
 func decodeDNSQuestion(questionBuffer []byte, bytesDecoded *int) DNSQuestion {
 	var question DNSQuestion
 	question.domainName = decodeDomainName(questionBuffer, true)
@@ -205,18 +257,11 @@ func decodeDNSQuestion(questionBuffer []byte, bytesDecoded *int) DNSQuestion {
 	return question
 }
 
-func decodeResourceRecord(responseBuffer []byte, resourceRecordBuffer []byte, bytesDecoded *int) DNSResourceRecord {
+func decodeResourceRecord(responseBuffer []byte, resourceRecordBuffer []byte, positionInReply int, bytesDecoded *int) DNSResourceRecord {
 	var resourceRecord DNSResourceRecord
 	typeIndex := 0
-	if (resourceRecordBuffer[0] & 0x80) != 0 {
-		bytesDecodedFromDomain := 0
-		resourceRecord.domainName = decompressDomainName(resourceRecordBuffer, responseBuffer, &bytesDecodedFromDomain)
-		*bytesDecoded += bytesDecodedFromDomain
-		typeIndex = bytesDecodedFromDomain
-	} else {
-		resourceRecord.domainName = decodeDomainName(resourceRecordBuffer, true)
-		typeIndex = len(resourceRecord.domainName) + 2
-	}
+	resourceRecord.domainName, typeIndex = decodeDomain(responseBuffer, positionInReply)
+
 	resourceRecord.resourceRecordType = ResourceRecordType(
 		binary.BigEndian.Uint16(resourceRecordBuffer[typeIndex:]))
 	resourceRecord.resourceRecordClass = ResourceRecordClass(
@@ -241,15 +286,10 @@ func decodeResourceRecord(responseBuffer []byte, resourceRecordBuffer []byte, by
 		resourceRecord.resourceData = string(rdData)
 		*bytesDecoded += 4
 	} else if resourceRecord.resourceRecordType == RESOURCE_RECORD_TYPE_CNAME {
-		if (resourceRecordBuffer[typeIndex+10] & 0x80) != 0 {
-			domainNameLocation := resourceRecordBuffer[typeIndex+11]
-			resourceRecord.resourceData = decodeDomainName(responseBuffer[domainNameLocation:], true)
-			*bytesDecoded += 2
-		} else {
-			bytesDecodedFromDomain := 0
-			resourceRecord.resourceData = decompressDomainName(resourceRecordBuffer[typeIndex+10:], responseBuffer, &bytesDecodedFromDomain)
-			*bytesDecoded += *&bytesDecodedFromDomain
-		}
+		resourceData, domainBytesDecoded := decodeDomain(responseBuffer, positionInReply+typeIndex+10)
+		resourceRecord.resourceData = resourceData
+		*bytesDecoded += domainBytesDecoded
+
 	}
 	return resourceRecord
 }
@@ -316,7 +356,7 @@ func queryDomainNameService(domainName string, dnsServer string) int32 {
 	}
 
 	for i := 0; i < int(responseHeader.answerCount); i++ {
-		resourceRecord := decodeResourceRecord(reply, reply[positionInReply:], &bytesDecoded)
+		resourceRecord := decodeResourceRecord(reply, reply[positionInReply:], positionInReply, &bytesDecoded)
 		positionInReply += bytesDecoded
 		fmt.Printf("\nANSWER %d\n", i+1)
 		printResourceRecord(&resourceRecord)
