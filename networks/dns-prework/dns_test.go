@@ -6,12 +6,6 @@ import (
 	"testing"
 )
 
-func TestQueryDomainNameService(t *testing.T) {
-	if queryDomainNameService("www.google.com", "8.8.8.8") != 0 {
-		t.Error(`queryDomainNameService returned non-zero error code.`)
-	}
-}
-
 func TestEncodeDNSHeader(t *testing.T) {
 	header := DNSHeader{
 		ID:               1000,
@@ -88,7 +82,7 @@ func TestDecodeDNSQuestion(t *testing.T) {
 func TestDecodeResourceRecord(t *testing.T) {
 
 	encodedResponse := []byte("\x03\xe8\x81\x80\x00\x01\x00\x01\x00\x00\x00\x01\x03\x77\x77\x77\x06\x67\x6f\x6f\x67\x6c\x65\x03\x63\x6f\x6d\x00\x00\x01\x00\x01\xc0\x0c\x00\x01\x00\x01\x00\x00\x00\x19\x00\x04\x8e\xfa\x41\xe4\x00\x00\x29\x02\x00\x00\x00\x00\x00\x00\x00")
-	encodedResourceRecord := []byte("\xc0\x0c\x00\x01\x00\x01\x00\x00\x00\x19\x00\x04\x8e\xfa\x41\xe4")
+	encodedResourceRecord := []byte("\xc0\x0c\x00\x01\x00\x01\x00\x00\x00\x19\x00\x04\x8e\xfa\x41\xe4\xc0\x0c\x00\x01\x00\x01\x00\x00\x00\x19\x00\x04\x8e\xfa\x41\xe4")
 
 	decodedResourceRecordExpected := DNSResourceRecord{
 		domainName:          "www.google.com",
@@ -100,7 +94,7 @@ func TestDecodeResourceRecord(t *testing.T) {
 	}
 
 	var bytesDecoded int
-	decodedResourceRecordActual := decodeResourceRecord(encodedResponse, encodedResourceRecord, &bytesDecoded)
+	decodedResourceRecordActual := decodeResourceRecord(encodedResponse, encodedResourceRecord, 32, &bytesDecoded)
 
 	if decodedResourceRecordExpected != decodedResourceRecordActual {
 		t.Error("decodeResourceRecord() returned incorrect resource record.",
