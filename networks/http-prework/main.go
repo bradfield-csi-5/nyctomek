@@ -68,6 +68,7 @@ func runEchoLoop(clientFileDescriptor int, clientAddress unix.Sockaddr) {
 			return
 		}
 		err = unix.Sendto(clientFileDescriptor, message[:receivedBytes], 0, clientAddress)
+
 		handleError(err)
 	}
 }
@@ -92,6 +93,26 @@ func forwardingServer() {
 }
 
 func runForwardingLoop(
+	clientFileDescriptor int,
+	destinationFileDescriptor int,
+	destinationAddress unix.Sockaddr) {
+
+	message := make([]byte, MSG_BUFFER_SIZE)
+
+	for {
+		receivedBytes, _, err := unix.Recvfrom(clientFileDescriptor, message, 0)
+		handleError(err)
+
+		if receivedBytes == 0 {
+			unix.Close(clientFileDescriptor)
+			return
+		}
+		err = unix.Sendto(destinationFileDescriptor, message[:receivedBytes], 0, destinationAddress)
+		handleError(err)
+	}
+}
+
+func runHTTPProxy(
 	clientFileDescriptor int,
 	destinationFileDescriptor int,
 	destinationAddress unix.Sockaddr) {
