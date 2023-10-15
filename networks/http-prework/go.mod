@@ -1,4 +1,4 @@
-module networks/http
+module networks/http-prework
 
 go 1.21.0
 

@@ -8,7 +8,7 @@ $ nc -l 1235
 
 # Back in nc:
 HTTP/1.1 200 OK
-Content-length 4
+Content-length: 4
 Content-type: text/plain;charset=utf8
 
 😍

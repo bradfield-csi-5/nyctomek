@@ -14,7 +14,7 @@ var (
 	FORWARD_DEST_PORT  = 2025
 	ADDR               = [4]byte{127, 0, 0, 1}
 	LISTEN_QUEUE_DEPTH = 1000
-	MSG_BUFFER_SIZE    = 4096
+	MSG_BUFFER_SIZE    = 1024
 	CRLF_DELIMETER     = "\r\n"
 )
 
@@ -23,13 +23,15 @@ func main() {
 	mode := flag.String("mode", "echo", "Mode to run: valid options are 'echo' and 'forward'.")
 	flag.Parse()
 
+	cachePath := flag.String("cachePath", "", "Comma-separated list of paths; resources in any of these paths will be served from cache.")
+
 	switch *mode {
 	case "echo":
 		echoServer()
 	case "forward":
 		forwardingServer()
 	case "proxy":
-		httpProxyServer()
+		httpProxyServer(*cachePath)
 	default:
 		log.Fatal("Invalid mode:", *mode, "specified, valid modes are 'echo' and 'forward'.")
 	}
@@ -53,20 +55,12 @@ func initializeServer() int {
 
 func echoServer() {
 
+	message := make([]byte, MSG_BUFFER_SIZE)
 	serverFileDescriptor := initializeServer()
 
 	for {
 		clientFileDescriptor, clientAddress, err := unix.Accept(serverFileDescriptor)
 		handleError(err)
-		runEchoLoop(clientFileDescriptor, clientAddress)
-	}
-}
-
-func runEchoLoop(clientFileDescriptor int, clientAddress unix.Sockaddr) {
-
-	message := make([]byte, MSG_BUFFER_SIZE)
-
-	for {
 		receivedBytes, _, err := unix.Recvfrom(clientFileDescriptor, message, 0)
 		handleError(err)
 
@@ -74,9 +68,9 @@ func runEchoLoop(clientFileDescriptor int, clientAddress unix.Sockaddr) {
 			unix.Close(clientFileDescriptor)
 			return
 		}
-		err = unix.Sendto(clientFileDescriptor, []byte("runEchoLoop"), 0, clientAddress)
-
+		err = unix.Sendto(clientFileDescriptor, []byte("HTTP/1.1 200 OK\r\nContent-Length: 93\r\n\r\n<!DOCTYPE html><html><body style='background-color:green;'><h1>runEchoLoop</h1></body></html>"), 0, clientAddress)
 		handleError(err)
+		unix.Close(clientFileDescriptor)
 	}
 }
 
@@ -119,7 +113,7 @@ func runForwardingLoop(
 	}
 }
 
-func httpProxyServer() {
+func httpProxyServer(cachePath string) {
 
 	proxyFileDescriptor := initializeServer()
 
@@ -218,9 +212,6 @@ func runHTTPProxyLoop(
 	destinationFileDescriptor int) {
 
 	message := make([]byte, MSG_BUFFER_SIZE)
-	//receivedBytes, _, err := unix.Recvfrom(clientFileDescriptor, message, 0)
-	//handleError(err)
-	//fmt.Printf("Received %d bytes from client.\n", receivedBytes)
 
 	httpLine := make([]byte, 0)
 	receivedNullLine := false
@@ -237,12 +228,13 @@ func runHTTPProxyLoop(
 		err = unix.Send(destinationFileDescriptor, message[:receivedBytes], 0)
 		handleError(err)
 
-		httpLine, contentLength, receivedContentLength, receivedNullLine, done = streamInHTTPMessage(
-			string(message[:receivedBytes]),
-			httpLine,
-			receivedNullLine,
-			contentLength,
-			receivedContentLength)
+		httpLine, contentLength, receivedContentLength, receivedNullLine, done =
+			streamInHTTPMessage(
+				string(message[:receivedBytes]),
+				httpLine,
+				receivedNullLine,
+				contentLength,
+				receivedContentLength)
 	}
 
 	for done := false; done == false; {
