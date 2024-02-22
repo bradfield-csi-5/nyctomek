@@ -1,5 +1,5 @@
-#ifndef TUPLE
-#define TUPLE
+#ifndef TOMEKDB_TUPLE
+#define TOMEKDB_TUPLE
 
 #include <list>
 #include <string>
