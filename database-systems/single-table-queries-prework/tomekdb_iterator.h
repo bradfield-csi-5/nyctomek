@@ -5,8 +5,8 @@
 
 namespace tomekdb {
 class iterator {
-  tuple next() = 0;
-  void close() = 0;
+  virtual tuple next() = 0;
+  virtual void close() = 0;
 };
 }
 
