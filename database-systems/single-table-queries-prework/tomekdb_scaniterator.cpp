@@ -1,17 +1,19 @@
 #include <tomekdb_scaniterator.h>
 
-namespace tomekdb {
-
-ScanIterator::ScanIterator(std::list<Tuple> &tuples) :
-    d_tuples{tuples},
-    d_currentTuple{d_tuples.begin()}
+namespace tomekdb
 {
-}
 
-const Tuple* ScanIterator::next() {
-    return (d_currentTuple == d_tuples.end()) ? nullptr : &(*d_currentTuple++);
-}
+    ScanIterator::ScanIterator(std::list<Tuple> &tuples) : d_tuples{tuples},
+                                                           d_currentTuple{d_tuples.begin()}
+    {
+    }
 
-void ScanIterator::close() {
-}
+    const Tuple *ScanIterator::next()
+    {
+        return (d_currentTuple == d_tuples.end()) ? nullptr : &(*d_currentTuple++);
+    }
+
+    void ScanIterator::close()
+    {
+    }
 }

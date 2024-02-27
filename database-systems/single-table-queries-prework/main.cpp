@@ -2,6 +2,7 @@
 #include <algorithm>
 #include <iterator>
 #include <tomekdb_scaniterator.h>
+#include <tomekdb_limititerator.h>
 
 int main(int argc, char *argv[])
 {
@@ -34,13 +35,13 @@ int main(int argc, char *argv[])
         {{"company", "3M Co."}, {"ticker", "mmm"}, {"price", 91.25}},
         {{"company", "Intel Corp."}, {"ticker", "intc"}, {"price", 43.51}}};
 
-    tomekdb::ScanIterator scan{records};
-    while (const tomekdb::Tuple *tuple = scan.next())
+    tomekdb::ScanIterator scanNode{records};
+    size_t limit{1};
+    tomekdb::LimitIterator limitNode{limit, &scanNode};
+    while (const tomekdb::Tuple *tuple = limitNode.next())
     {
         std::cout << *tuple;
-        
     }
-    scan.close();
 
     return 0;
 }
