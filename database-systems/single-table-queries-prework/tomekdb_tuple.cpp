@@ -10,6 +10,16 @@ namespace tomekdb
     {
     }
 
+    const std::string &Field::name() const
+    {
+        return d_name;
+    }
+
+    const std::variant<int, double, std::string> &Field::data() const
+    {
+        return d_data;
+    }
+
     std::ostream &operator<<(std::ostream &os, const tomekdb::Field &field)
     {
         os << "{ " << field.d_name << ", ";
@@ -30,6 +40,11 @@ namespace tomekdb
         }
         os << " }";
         return os;
+    }
+
+    const std::list<Field> &Tuple::fields() const
+    {
+        return d_columns;
     }
 
     std::ostream &operator<<(std::ostream &os, const tomekdb::Tuple &tuple)

@@ -9,8 +9,8 @@ namespace tomekdb
     {
     public:
         LimitIterator(size_t limit, Iterator *child);
-        virtual const Tuple *next();
-        virtual void close();
+        virtual const Tuple *next() override;
+        virtual void close() override;
 
     private:
         size_t d_limit;

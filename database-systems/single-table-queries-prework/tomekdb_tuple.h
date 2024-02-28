@@ -15,6 +15,9 @@ namespace tomekdb
     Field(const std::string &name,
           const std::variant<int, double, std::string> &data);
 
+  const std::string& name() const;
+  const std::variant<int, double, std::string>& data() const;
+
   private:
     std::string d_name;
     std::variant<int, double, std::string> d_data;
@@ -32,6 +35,8 @@ namespace tomekdb
     Tuple(const std::initializer_list<Field> &columns) : d_columns{columns}
     {
     }
+
+    const std::list<Field> &fields() const;
 
   private:
     std::list<Field> d_columns;

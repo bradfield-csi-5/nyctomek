@@ -3,6 +3,7 @@
 #include <iterator>
 #include <tomekdb_scaniterator.h>
 #include <tomekdb_limititerator.h>
+#include <tomekdb_selectioniterator.h>
 
 int main(int argc, char *argv[])
 {
@@ -43,5 +44,20 @@ int main(int argc, char *argv[])
         std::cout << *tuple;
     }
 
+    tomekdb::SelectionCriteria selectionCriteria{
+        "ticker",
+        "unh",
+        tomekdb::SelectionCriteria::ComparisonOperator::EQUALS};
+
+    tomekdb::SelectionIterator selectionIterator{selectionCriteria, &scanNode};
+    const tomekdb::Tuple *tuple = selectionIterator.next();
+    if (tuple)
+    {
+        std::cout << *tuple;
+    }
+    else
+    {
+        std::cout << nullptr << std::endl;
+    }
     return 0;
 }
