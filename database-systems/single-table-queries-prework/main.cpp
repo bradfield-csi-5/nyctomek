@@ -4,6 +4,7 @@
 #include <tomekdb_scaniterator.h>
 #include <tomekdb_limititerator.h>
 #include <tomekdb_selectioniterator.h>
+#include <tomekdb_projectioniterator.h>
 
 int main(int argc, char *argv[])
 {
@@ -47,7 +48,7 @@ int main(int argc, char *argv[])
     tomekdb::SelectionCriteria selectionCriteria{
         "ticker",
         "unh",
-        tomekdb::SelectionCriteria::ComparisonOperator::EQUALS};
+        tomekdb::SelectionCriteria::ComparisonOperator::NOT_EQUAL};
 
     tomekdb::SelectionIterator selectionIterator{selectionCriteria, &scanNode};
     const tomekdb::Tuple *tuple = selectionIterator.next();
@@ -58,6 +59,13 @@ int main(int argc, char *argv[])
     else
     {
         std::cout << nullptr << std::endl;
+    }
+
+    tomekdb::ProjectionIterator projectionIterator{{"ticker", "price"}, &selectionIterator};
+    while (const tomekdb::Tuple *tuple = projectionIterator.next())
+    {
+        std::cout << *tuple;
+        delete tuple;
     }
     return 0;
 }
