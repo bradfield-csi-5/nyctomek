@@ -1,6 +1,7 @@
 #include <tomekdb_tuple.h>
 #include <algorithm>
 #include <iterator>
+#include <tomekdb_sortiterator.h>
 #include <tomekdb_scaniterator.h>
 #include <tomekdb_limititerator.h>
 #include <tomekdb_selectioniterator.h>
@@ -53,7 +54,7 @@ int main(int argc, char *argv[])
     tomekdb::SelectionIterator selectionIterator{selectionCriteria, scanNode};
     std::optional<tomekdb::Tuple> tuple = selectionIterator.next();
     if(tuple) {
-    std::cout << *tuple;
+        std::cout << *tuple;
     }
     else {
         std::cout << "No record found matching selection criteria." << std::endl;
@@ -62,6 +63,16 @@ int main(int argc, char *argv[])
     tomekdb::ProjectionIterator projectionIterator{{"ticker", "price"}, selectionIterator};
     while (std::optional<tomekdb::Tuple> tuple = projectionIterator.next())
     {
+        std::cout << *tuple;
+    }
+
+    tomekdb::ScanIterator sortedScanNode{records};
+    tomekdb::SortIterator sortIterator{
+        "company",
+        tomekdb::SortIterator::SortOrder::ASCENDING,
+        sortedScanNode};
+
+    while(std::optional<tomekdb::Tuple> tuple = sortIterator.next()) {
         std::cout << *tuple;
     }
     return 0;
