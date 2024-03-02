@@ -11,13 +11,13 @@ namespace tomekdb
     class ProjectionIterator : public Iterator
     {
     public:
-        ProjectionIterator(const std::list<std::string> &fieldNames, Iterator *child);
-        virtual const Tuple *next() override;
+        ProjectionIterator(const std::list<std::string> &fieldNames, Iterator &child);
+        virtual std::optional<Tuple> next() override;
         virtual void close() override;
 
     private:
         std::list<std::string> d_fieldNames;
-        Iterator *d_child;
+        Iterator &d_child;
     };
 }
 #endif

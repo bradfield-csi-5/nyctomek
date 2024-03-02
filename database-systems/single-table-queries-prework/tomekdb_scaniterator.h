@@ -7,7 +7,7 @@ namespace tomekdb {
 class ScanIterator : public Iterator {
 public:
   ScanIterator(std::list<Tuple>& tuples);
-  virtual const Tuple* next() override;
+  virtual std::optional<Tuple> next() override;
   virtual void close() override;
 private:
     std::list<Tuple> d_tuples;

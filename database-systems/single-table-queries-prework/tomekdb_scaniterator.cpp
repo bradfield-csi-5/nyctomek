@@ -8,9 +8,11 @@ namespace tomekdb
     {
     }
 
-    const Tuple *ScanIterator::next()
+    std::optional<Tuple> ScanIterator::next()
     {
-        return (d_currentTuple == d_tuples.end()) ? nullptr : &(*d_currentTuple++);
+        return (d_currentTuple == d_tuples.end())
+                   ? std::nullopt
+                   : std::optional<Tuple>(*d_currentTuple++);
     }
 
     void ScanIterator::close()

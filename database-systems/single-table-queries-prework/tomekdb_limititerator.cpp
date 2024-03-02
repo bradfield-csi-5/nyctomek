@@ -3,24 +3,24 @@
 namespace tomekdb
 {
 
-    LimitIterator::LimitIterator(size_t limit, Iterator *child) : d_limit{limit},
+    LimitIterator::LimitIterator(size_t limit, Iterator &child) : d_limit{limit},
                                                                   d_child{child}
     {
     }
 
-    const Tuple *LimitIterator::next()
+    std::optional<Tuple> LimitIterator::next()
     {
         if (d_limit)
         {
             --d_limit;
-            return d_child->next();
+            return d_child.next();
         }
-        return nullptr;
+        return std::nullopt;
     }
 
     void LimitIterator::close()
     {
-        d_child->close();
+        d_child.close();
     }
 
 }

@@ -7,15 +7,15 @@ namespace tomekdb
 
     ProjectionIterator::ProjectionIterator(
         const std::list<std::string> &fieldNames,
-        Iterator *child)
+        Iterator &child)
         : d_fieldNames{fieldNames},
           d_child{child}
     {
     }
 
-    const Tuple *ProjectionIterator::next()
+    std::optional<Tuple> ProjectionIterator::next()
     {
-        const Tuple *nextTuple = d_child->next();
+        std::optional<Tuple> nextTuple = d_child.next();
         if (nextTuple)
         {
             std::list<Field> projectedFields;
@@ -28,13 +28,14 @@ namespace tomekdb
             }
             if (projectedFields.size())
             {
-                return new Tuple{projectedFields};
+                return Tuple{projectedFields};
             }
         }
-        return nullptr;
+        return std::nullopt;
     }
 
     void ProjectionIterator::close()
     {
+        d_child.close();
     }
 }

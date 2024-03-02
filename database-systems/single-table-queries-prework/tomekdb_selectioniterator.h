@@ -35,14 +35,14 @@ namespace tomekdb
     class SelectionIterator : public Iterator
     {
     public:
-        SelectionIterator(const SelectionCriteria &selectionCriteria, Iterator *child);
-        virtual const Tuple *next() override;
+        SelectionIterator(const SelectionCriteria &selectionCriteria, Iterator &child);
+        virtual std::optional<Tuple> next() override;
         virtual void close() override;
 
     private:
-        bool selectionMatches(const Tuple *tuple);
+        bool selectionMatches(const Tuple &tuple);
         SelectionCriteria d_selectionCriteria;
-        Iterator *d_child;
+        Iterator &d_child;
     };
 
 }

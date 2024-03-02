@@ -39,8 +39,8 @@ int main(int argc, char *argv[])
 
     tomekdb::ScanIterator scanNode{records};
     size_t limit{1};
-    tomekdb::LimitIterator limitNode{limit, &scanNode};
-    while (const tomekdb::Tuple *tuple = limitNode.next())
+    tomekdb::LimitIterator limitNode{limit, scanNode};
+    while (auto tuple = limitNode.next())
     {
         std::cout << *tuple;
     }
@@ -50,22 +50,19 @@ int main(int argc, char *argv[])
         "unh",
         tomekdb::SelectionCriteria::ComparisonOperator::NOT_EQUAL};
 
-    tomekdb::SelectionIterator selectionIterator{selectionCriteria, &scanNode};
-    const tomekdb::Tuple *tuple = selectionIterator.next();
-    if (tuple)
-    {
-        std::cout << *tuple;
+    tomekdb::SelectionIterator selectionIterator{selectionCriteria, scanNode};
+    std::optional<tomekdb::Tuple> tuple = selectionIterator.next();
+    if(tuple) {
+    std::cout << *tuple;
     }
-    else
-    {
-        std::cout << nullptr << std::endl;
+    else {
+        std::cout << "No record found matching selection criteria." << std::endl;
     }
 
-    tomekdb::ProjectionIterator projectionIterator{{"ticker", "price"}, &selectionIterator};
-    while (const tomekdb::Tuple *tuple = projectionIterator.next())
+    tomekdb::ProjectionIterator projectionIterator{{"ticker", "price"}, selectionIterator};
+    while (std::optional<tomekdb::Tuple> tuple = projectionIterator.next())
     {
         std::cout << *tuple;
-        delete tuple;
     }
     return 0;
 }

@@ -1,4 +1,5 @@
 #include <tomekdb_selectioniterator.h>
+#include <sstream>
 
 namespace tomekdb
 {
@@ -30,27 +31,27 @@ namespace tomekdb
 
     SelectionIterator::SelectionIterator(
         const SelectionCriteria &selectionCriteria,
-        Iterator *child)
+        Iterator &child)
         : d_selectionCriteria{selectionCriteria},
           d_child{child}
     {
     }
 
-    const Tuple *SelectionIterator::next()
+    std::optional<Tuple> SelectionIterator::next()
     {
-        while (const Tuple *tuple = d_child->next())
+        while (std::optional<Tuple> tuple{d_child.next()})
         {
-            if (selectionMatches(tuple))
+            if (selectionMatches(tuple.value()))
             {
                 return tuple;
             }
         }
-        return nullptr;
+        return std::nullopt;
     }
 
-    bool SelectionIterator::selectionMatches(const Tuple *tuple)
+    bool SelectionIterator::selectionMatches(const Tuple &tuple)
     {
-        for (const auto field : tuple->fields())
+        for (const auto field : tuple.fields())
         {
             if (field.name() == d_selectionCriteria.fieldName())
             {
@@ -67,7 +68,12 @@ namespace tomekdb
                 case SelectionCriteria::ComparisonOperator::LESS_THAN:
                     return field.data() < selectionValue;
                 default:
-                    return false; // TODO: throw.
+
+                    std::ostringstream os;
+                    os << "Invalid comparison operator: "
+                       << static_cast<int>(d_selectionCriteria.comparisonOperator())
+                       << ".";
+                    throw std::runtime_error(os.str());
                 }
             }
         }
@@ -76,5 +82,6 @@ namespace tomekdb
 
     void SelectionIterator::close()
     {
+        d_child.close();
     }
 }
