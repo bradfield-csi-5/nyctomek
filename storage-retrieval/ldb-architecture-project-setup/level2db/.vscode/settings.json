@@ -1,0 +1,8 @@
+{
+    "C_Cpp.default.includePath": [
+        "."
+    ],
+    "files.associations": {
+        "optional": "cpp"
+    }
+}
