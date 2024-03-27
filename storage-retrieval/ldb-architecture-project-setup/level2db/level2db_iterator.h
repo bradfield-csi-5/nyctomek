@@ -1,22 +1,27 @@
 #ifndef LEVEL2DB_ITERATOR
 #define LEVEL2DB_ITERATOR
 
-#include <level2db_common.h>
-#include <optional>
+#include <level2db_iteratorinterface.h>
+#include <level2db_database.h>
 
 namespace Level2DB {
 
-class Iterator {
+class Iterator : public IteratorInterface {
 
-bool Next();
+public:
+    Iterator(Database::KVStore::const_iterator &start, Database::KVStore::const_iterator &end);
 
-std::optional<ErrorCode> Error();
+    virtual bool Next();
 
-Bytes Key();
+    virtual std::optional<ErrorCode> Error();
 
-Bytes Value();
+    virtual Bytes Key();
 
+    virtual Bytes Value();
 
+private:
+    Database::KVStore::const_iterator m_current;
+    Database::KVStore::const_iterator m_end;
 };
 }
 

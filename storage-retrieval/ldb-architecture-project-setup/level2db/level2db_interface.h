@@ -8,19 +8,21 @@
 
 namespace Level2DB {
 
-class Level2DBIterator;
+class IteratorInterface;
 
 class Interface {
 
-std::variant<ErrorCode, Bytes> Get(const Bytes &key);
+public:
 
-bool Has(const Bytes &key);
+    virtual std::variant<ErrorCode, Bytes> Get(const Bytes &key) = 0;
 
-std::optional<ErrorCode> Put(const Bytes &key, const Bytes &value);
+    virtual bool Has(const Bytes &key) = 0;
 
-std::optional<ErrorCode> Delete(const Bytes &key);
+    virtual std::optional<ErrorCode> Put(const Bytes &key, const Bytes &value) = 0;
 
-std::variant<Level2DBIterator, ErrorCode> RangeScan(const Bytes &start, const Bytes &end);
+    virtual std::optional<ErrorCode> Delete(const Bytes &key) = 0;
+
+    virtual std::variant<IteratorInterface, ErrorCode> RangeScan(const Bytes &start, const Bytes &end) = 0;
 
 };
 
