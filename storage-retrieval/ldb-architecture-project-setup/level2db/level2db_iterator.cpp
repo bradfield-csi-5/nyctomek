@@ -11,7 +11,11 @@ Iterator::Iterator(
 }
 
 bool Iterator::Next() {
-    return m_current != m_end;
+    bool hasNext = m_current != m_end;
+    if(hasNext) {
+        ++m_current;
+    }
+    return hasNext;
 }
 
 std::optional<ErrorCode> Iterator::Error() {

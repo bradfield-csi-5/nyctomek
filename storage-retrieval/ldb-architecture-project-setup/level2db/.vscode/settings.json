@@ -4,5 +4,6 @@
     ],
     "files.associations": {
         "optional": "cpp"
-    }
+    },
+    "cmake.configureOnOpen": false
 }

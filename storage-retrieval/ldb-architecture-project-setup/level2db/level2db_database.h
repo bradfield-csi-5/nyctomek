@@ -6,6 +6,8 @@
 
 namespace Level2DB {
 
+class Iterator;
+
 class Database : public Interface {
 
 public:
@@ -18,7 +20,7 @@ public:
 
     virtual std::optional<ErrorCode> Delete(const Bytes &key);
 
-    virtual std::variant<IteratorInterface, ErrorCode> RangeScan(const Bytes &start, const Bytes &end);
+    virtual std::variant<ErrorCode, IteratorInterface*> RangeScan(const Bytes &start, const Bytes &end);
 
 private:
 

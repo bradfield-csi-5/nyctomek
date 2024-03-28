@@ -1,4 +1,5 @@
 #include <level2db_database.h>
+#include <level2db_iterator.h>
 
 namespace Level2DB {
 
@@ -27,5 +28,17 @@ std::optional<ErrorCode> Database::Delete(const Bytes &key) {
     return std::nullopt;
     
 }
+
+std::variant<ErrorCode, IteratorInterface*>
+Database::RangeScan(const Bytes &start, const Bytes &end) {
+
+    Database::KVStore::const_iterator 
+        startIter = m_keyValueStore.find(start),
+        endIter = m_keyValueStore.find(end);
+
+    return new Iterator{startIter, endIter};
+
+}
+
 
 }

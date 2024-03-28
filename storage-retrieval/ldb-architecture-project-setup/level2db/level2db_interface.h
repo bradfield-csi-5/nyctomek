@@ -22,7 +22,7 @@ public:
 
     virtual std::optional<ErrorCode> Delete(const Bytes &key) = 0;
 
-    virtual std::variant<IteratorInterface, ErrorCode> RangeScan(const Bytes &start, const Bytes &end) = 0;
+    virtual std::variant<ErrorCode, IteratorInterface*> RangeScan(const Bytes &start, const Bytes &end) = 0;
 
 };
 
