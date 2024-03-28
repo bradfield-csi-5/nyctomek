@@ -11,11 +11,10 @@ Iterator::Iterator(
 }
 
 bool Iterator::Next() {
-    bool hasNext = m_current != m_end;
-    if(hasNext) {
-        ++m_current;
+    if(m_current == m_end || ++m_current == m_end) {
+        return false;
     }
-    return hasNext;
+    return true;
 }
 
 std::optional<ErrorCode> Iterator::Error() {
@@ -23,12 +22,10 @@ std::optional<ErrorCode> Iterator::Error() {
 }
 
 Bytes Iterator::Key() {
-    assert(Next());
     return m_current->first;
 }
 
 Bytes Iterator::Value() {
-    assert(Next());
     return m_current->second;
 }
 }
