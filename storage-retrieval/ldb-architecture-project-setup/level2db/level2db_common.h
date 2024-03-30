@@ -9,6 +9,7 @@ using Bytes = std::string;
 
 enum class ErrorCode : short {
     KEY_NOT_FOUND,
+    END_OF_RANGE,
     GENERIC_ERROR
 };
 
