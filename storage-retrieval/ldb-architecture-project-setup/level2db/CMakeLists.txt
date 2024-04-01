@@ -11,3 +11,7 @@ target_link_libraries(perftest level2db)
 
 add_subdirectory(tests)
 
+add_library(skiplist STATIC IMPORTED)
+set_target_properties(skiplist PROPERTIES IMPORTED_LOCATION "/home/tomasz/Projects/nyctomek/storage-retrieval/skiplist/build/libskiplist.a")
+target_link_libraries(level2db PUBLIC skiplist)
+target_include_directories(level2db PUBLIC "/home/tomasz/Projects/nyctomek/storage-retrieval/skiplist")
