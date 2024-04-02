@@ -8,8 +8,9 @@
 int main(int argc, char *argv[]) {
 
     bool useSkipList = false;
-    if(argc > 1 && argv[1] == "--skiplist") {
+    if(argc > 1 && argv[1] == std::string{"--skiplist"}) {
         useSkipList = true;
+        std::cout << "Using memtable backed by skiplist." << std::endl;
     }
 
     const int MAX_LINE_LENGTH = 1024;
@@ -28,7 +29,7 @@ int main(int argc, char *argv[]) {
     }
 
     // Randomize the data.
-    std::sort(idTitlePairs.begin(), idTitlePairs.end(), [](auto &lhs, auto &rhs) { return std::rand() % 2 == 0; });
+    std::sort(idTitlePairs.begin(), idTitlePairs.end(), [](auto &lhs, auto &rhs) { return std::rand() % 5 == 0; });
 
     Level2DB::Database db{useSkipList};
     auto start = std::chrono::high_resolution_clock::now();

@@ -25,7 +25,7 @@ class SkipList {
 
 public:
     enum Constants {
-        MAX_LEVEL = 8
+        MAX_LEVEL = 16
     };
 
     struct Node {
