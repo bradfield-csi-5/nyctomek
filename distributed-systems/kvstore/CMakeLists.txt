@@ -1,3 +1,5 @@
 cmake_minimum_required(VERSION 3.29)
 project(kvstore)
-add_executable(kvstore main.cxx)
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
+add_executable(kvstore main.cpp)
